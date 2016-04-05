@@ -10,6 +10,7 @@ ser.flushOutput()
 ser.flushInput()
 tx_data = sys.argv[1]
 
+#TODO: Handle read of two command types
 tx_data = (tx_data + chr(13))
 
 ser.write(tx_data)
