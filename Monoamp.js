@@ -18,7 +18,7 @@ function run(){
 	// parameters
 	var populateField = document.getElementById("zoneSelect").value="11";
 	zoneValid = true;
-	stringCmd = sendQuery + Zone + String.fromCharCode(13)+ String.fromCharCode(10) ;
+	stringCmd = sendQuery + Zone; //+ String.fromCharCode(13) + String.fromCharCode(10) ;
 	console.log("App start - Query status Zone 1:"+stringCmd);
 	serCmd(stringCmd);	// POST serial request for zone data
 	// all settings  first zone and power state of zone
@@ -50,7 +50,7 @@ function doAssignZone(){
 	var zone_value = document.getElementById("zoneSelect").value;
 	Zone = zone_value;
 	zoneValid = true;
-	stringCmd = sendQuery + Zone + String.fromCharCode(13)+ String.fromCharCode(10);
+	stringCmd = sendQuery + Zone; // + String.fromCharCode(13) + String.fromCharCode(10);
 	console.log("Command to Post:"+stringCmd);
 	serCmd(stringCmd);	// POST serial command to php
 }
@@ -63,7 +63,7 @@ function togglePower(){
 		powerButton.className = powerButton.className.replace("powerOn","powerOff");
 		powerButton.textContent = powerButton.textContent.replace("ON","OFF");
 		powerOn = false;
-		stringCmd = sendCommand + Zone + Power + "00" + String.fromCharCode(13)+ String.fromCharCode(10);
+		stringCmd = sendCommand + Zone + Power + "00"; // + String.fromCharCode(13) //+ String.fromCharCode(10);
 		console.log("Power On:"+powerOn);
 		console.log("Command to Post:"+stringCmd);
 		serCmd(stringCmd);  // POST Zone power off to php serial
@@ -72,7 +72,7 @@ function togglePower(){
 		powerButton.className = powerButton.className.replace("powerOff","powerOn");
 		powerButton.textContent = powerButton.textContent.replace("OFF","ON");
 		powerOn = true;
-		stringCmd = sendCommand + Zone + Power + "01" + String.fromCharCode(13) + String.fromCharCode(10);
+		stringCmd = sendCommand + Zone + Power + "01"; // + String.fromCharCode(13) // + String.fromCharCode(10);
 		console.log("Power On:"+powerOn);
 		console.log("Command to Post:"+stringCmd);
 		serCmd(stringCmd);  // POST Zone power on to php serial
@@ -83,7 +83,7 @@ function togglePower(){
 function doAssignSource(){
 	var source_value = document.getElementById("sourceSelect").value;
 	if (zoneValid === powerOn){
-		stringCmd = sendCommand + Zone + Source + source_value + String.fromCharCode(13) + String.fromCharCode(10);
+		stringCmd = sendCommand + Zone + Source + source_value; // + String.fromCharCode(13) // + String.fromCharCode(10);
 		console.log("Command to post:"+stringCmd);
 		serCmd(stringCmd);  // POST Source to php serial
 		}
