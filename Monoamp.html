@@ -3,10 +3,12 @@
 	
 <head>
 	<meta charset="utf-8" />
-    <link rel="stylesheet" href="Monoamp.css" type="text/css">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="./Monoamp.js"></script>
-    <script>
+    	<link rel="stylesheet" href="Monoamp.css" type="text/css">
+    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>		
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">  	
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    	<script src="./Monoamp.js"></script>
+	<script>
 		// We'll run the AJAX query when the page loads.
 		window.onload=run;
 	</script>
@@ -16,11 +18,15 @@
 <body>
 
 	<div class="menu">
-	<h2>MultiZone Control</h2>
-	
-	<p> Zone
-	
-	<select id="zoneSelect" class = "selection" onchange="doAssignZone()">
+	<div class="row menuRow">	
+		<div class= "col-sm-12 menuTitle">	
+		<h2>MultiZone Control</h2>
+		</div>
+	</div>
+	<div class = "row menuRow">
+	<div class= "col-sm-1"> Zone </div>
+	<div class= "col-sm-8">
+	<select id="zoneSelect" class = "form-control selection" onchange="doAssignZone()">
 		<option value="10">All Zones</option>	
 		<option value="11">Master Bedroom</option>
 		<option value="12">Dining Room</option>
@@ -29,15 +35,17 @@
 		<option value="15">Rec Room</option>
 		<option value="16">Office</option>
 	</select>	
-	</p>
-		
-	<p> 
-		<button type ="button" class = "powerOff" id = "zonePowerToggle" onclick = "togglePower()">Zone Power OFF</button>
-	</p>
-	
-	<p> Source 
-	
-	<select class = "selection" id="sourceSelect" onchange="doAssignSource()">
+	</div>		
+	<div class ="col-sm-3"> 
+		<button type ="button" class = "btn btn-block powerOff" id = "zonePowerToggle" onclick = "togglePower()">Zone Power OFF</button>
+	</div>
+	</div>
+	<div class = "row menuRow">
+	<div class = "col-sm-1">	
+	<p> Source </p> 
+	</div>
+	<div class ="col-sm-11"> 
+	<select class = "form-control selection" id="sourceSelect" onchange="doAssignSource()">
 		<option value="01">Turntable</option>
 		<option value="02">CD Player</option>
 		<option value="03">BlueTooth</option>
@@ -45,25 +53,43 @@
 		<option value="05">Source 5</option>
 		<option value="06">Source 6</option>
 	</select>
-	</p>
-	
-	<p> Bass
-		<input type="range" id="BS" defaultValue="7" max="14">
-	</p>
-
-	<p> Treble
-		<input type="range" id="TR" value="7" max="14">
-	</p>
-	
-	<p> Balance
-		<input type="range" id="BL" value="10" max="20">
-	</p>
-	
-	<p> Volume
-		<input type="range" id="VO" value="19" max="38">
-	</p>	
-
-	<p>
-		<button type="button" class="muteoff" id ="zoneMute">Mute ON/OFF</button>
-	</p>
+	</div>
+	</div>
+	<div class="row menuRow">
+    		<div class="col-sm-1">
+      		<p>Bass</p>
+    		</div>
+    		<div class="col-sm-11">
+      		<input type="range" id="BS" defaultValue="7" max="14">
+    		</div>
+  	</div>
+	<div class="row menuRow">
+    		<div class="col-sm-1">
+      		<p>Treble</p>
+    		</div>
+    		<div class="col-sm-11">
+      		<input type="range" id="TR" defaultValue="7" max="14">
+    		</div>
+  	</div>
+	<div class="row menuRow">
+    		<div class="col-sm-1">
+      		<p>Balance</p>
+    		</div>
+    		<div class="col-sm-11">
+      		<input type="range" id="BL" defaultValue="10" max="14">
+    		</div>
+  	</div>
+	<div class="row menuRow">
+    		<div class="col-sm-1">
+      		<p>Volume</p>
+    		</div>
+    		<div class="col-sm-11">
+      		<input type="range" id="VO" defaultValue="7" max="14">
+    		</div>
+  	</div>
+	<div class="row menuRow">
+		<div class="col-sm-12">
+		<button type="button" class="btn btn-lg btn-block" id ="zoneMute">Mute ON/OFF</button>
+		</div>
+	</div>
 </body>

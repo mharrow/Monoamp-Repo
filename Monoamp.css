@@ -1,24 +1,35 @@
 body {
+height:100%
 	}
 
 .menu {
     background-color:gray;
     color:black;
-    margin:30px;
-    padding:20px;
-    width:200px;
-    border:2px solid black;
+    /*margin:6em;*/
+    padding:5em;
+    /*width:50em;*/
+    border:0.5em solid black;
+    height: 100%
 	}
+.rowGap{
+    margin-bottom: 1em;
+}
+.menuRow{
+	height: 12.5%	
+}
+.menuTitle{
+	text-align:center; 
+}
 .powerOff{
 	background-color:darkred;
 	color:white;
-	margin:1px;
 	}
 .powerOn{
 	background-color:#33cc33;
 	color:black;
 	}
 .selection{
+	text-align: center;
 	background-color:#33cc33;
 	}
 
