@@ -24,9 +24,8 @@
 		</div>
 	</div>
 	<div class = "row menuRow">
-	<div class= "col-sm-1"> Zone </div>
-	<div class= "col-sm-8">
-	<select id="zoneSelect" class = "form-control selection" onchange="doAssignZone()">
+	<div class= "col-sm-12">
+	<select id="zoneSelect" onchange="doAssignZone()">
 		<option value="10">All Zones</option>	
 		<option value="11">Master Bedroom</option>
 		<option value="12">Dining Room</option>
@@ -36,16 +35,15 @@
 		<option value="16">Office</option>
 	</select>	
 	</div>		
-	<div class ="col-sm-3"> 
+	</div>
+	<div class = "row menuRow">
+	<div class ="col-sm-12"> 
 		<button type ="button" class = "btn btn-block powerOff" id = "zonePowerToggle" onclick = "togglePower()">Zone Power OFF</button>
 	</div>
 	</div>
 	<div class = "row menuRow">
-	<div class = "col-sm-1">	
-	<p> Source </p> 
-	</div>
-	<div class ="col-sm-11"> 
-	<select class = "form-control selection" id="sourceSelect" onchange="doAssignSource()">
+	<div class ="col-sm-12"> 
+	<select id="sourceSelect" onchange="doAssignSource()">
 		<option value="01">Turntable</option>
 		<option value="02">CD Player</option>
 		<option value="03">BlueTooth</option>

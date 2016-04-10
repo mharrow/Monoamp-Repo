@@ -1,13 +1,18 @@
+html *
+{
+   font-size: 20px; 
+   font-family: Arial;
+}
+
 body {
 height:100%
 	}
 
+
 .menu {
     background-color:gray;
     color:black;
-    /*margin:6em;*/
-    padding:5em;
-    /*width:50em;*/
+    padding:3em;
     border:0.5em solid black;
     height: 100%
 	}
@@ -32,4 +37,17 @@ height:100%
 	text-align: center;
 	background-color:#33cc33;
 	}
+select {
+	-webkit-appearance: menulist-button;
+	height: 100%
+	line-height:100%;
+}
+
+button, select {
+	text-transform: none;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+
 
