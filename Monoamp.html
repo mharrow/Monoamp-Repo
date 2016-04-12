@@ -1,93 +1,102 @@
 <html>
-	
-	
 <head>
-	<meta charset="utf-8" />
-    	<link rel="stylesheet" href="Monoamp.css" type="text/css">
-    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>		
-  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">  	
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    	<script src="./Monoamp.js"></script>
-	<script>
-		// We'll run the AJAX query when the page loads.
-		window.onload=run;
-	</script>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="Monoamp.css" type="text/css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="./Monoamp.js"></script>
+    <script>
+        // We'll run the AJAX query when the page loads.
+        window.onload = run;
+    </script>
 </head>
 
 
 <body>
 
-	<div class="menu">
-	<div class="row menuRow">	
-		<div class= "col-sm-12 menuTitle">	
-		<h2>MultiZone Control</h2>
-		</div>
-	</div>
-	<div class = "row menuRow">
-	<div class= "col-sm-12">
-	<select id="zoneSelect" onchange="doAssignZone()">
-		<option value="10">All Zones</option>	
-		<option value="11">Master Bedroom</option>
-		<option value="12">Dining Room</option>
-		<option value="13">Living Room</option>
-		<option value="14">Jordan's Room</option>
-		<option value="15">Rec Room</option>
-		<option value="16">Office</option>
-	</select>	
-	</div>		
-	</div>
-	<div class = "row menuRow">
-	<div class ="col-sm-12"> 
-		<button type ="button" class = "btn btn-block powerOff" id = "zonePowerToggle" onclick = "togglePower()">Zone Power OFF</button>
-	</div>
-	</div>
-	<div class = "row menuRow">
-	<div class ="col-sm-12"> 
-	<select id="sourceSelect" onchange="doAssignSource()">
-		<option value="01">Turntable</option>
-		<option value="02">CD Player</option>
-		<option value="03">BlueTooth</option>
-		<option value="04">Source 4</option>
-		<option value="05">Source 5</option>
-		<option value="06">Source 6</option>
-	</select>
-	</div>
-	</div>
-	<div class="row menuRow">
-    		<div class="col-sm-1">
-      		<p>Bass</p>
-    		</div>
-    		<div class="col-sm-11">
-      		<input type="range" id="BS" defaultValue="7" max="14">
-    		</div>
-  	</div>
-	<div class="row menuRow">
-    		<div class="col-sm-1">
-      		<p>Treble</p>
-    		</div>
-    		<div class="col-sm-11">
-      		<input type="range" id="TR" defaultValue="7" max="14">
-    		</div>
-  	</div>
-	<div class="row menuRow">
-    		<div class="col-sm-1">
-      		<p>Balance</p>
-    		</div>
-    		<div class="col-sm-11">
-      		<input type="range" id="BL" defaultValue="10" max="14">
-    		</div>
-  	</div>
-	<div class="row menuRow">
-    		<div class="col-sm-1">
-      		<p>Volume</p>
-    		</div>
-    		<div class="col-sm-11">
-      		<input type="range" id="VO" defaultValue="7" max="14">
-    		</div>
-  	</div>
-	<div class="row menuRow">
-		<div class="col-sm-12">
-		<button type="button" class="btn btn-lg btn-block" id ="zoneMute">Mute ON/OFF</button>
-		</div>
-	</div>
+<div class="menu container">
+    <div class="row rowGap">
+        <div class="col-sm-12 center">
+            MultiZone Control
+        </div>
+    </div>
+    <div class="row menuRow">
+        <div class="col-sm-12">
+            <select id="zoneSelect" onchange="doAssignZone()">
+                <option value="10">All Zones</option>
+                <option value="11">Master Bedroom</option>
+                <option value="12">Dining Room</option>
+                <option value="13">Living Room</option>
+                <option value="14">Jordan's Room</option>
+                <option value="15">Rec Room</option>
+                <option value="16">Office</option>
+            </select>
+        </div>
+    </div>
+    <div class="row menuRow">
+        <div class="col-sm-12">
+            <button type="button" class="btn btn-block powerOff" id="zonePowerToggle" onclick="togglePower()">Zone Power OFF</button>
+        </div>
+    </div>
+    <div class="row menuRow rowGap">
+        <div class="col-sm-12">
+            <select id="sourceSelect" onchange="doAssignSource()">
+                <option value="01">Turntable</option>
+                <option value="02">CD Player</option>
+                <option value="03">BlueTooth</option>
+                <option value="04">Source 4</option>
+                <option value="05">Source 5</option>
+                <option value="06">Source 6</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 center">
+            <p>Bass</p>
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-sm-4 center">Up</div>
+            <div class="col-sm-4 center">0</div>
+            <div class="col-sm-4 center">Down</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 center">
+            <p>Treble</p>
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-sm-4 center">Up</div>
+            <div class="col-sm-4 center">0</div>
+            <div class="col-sm-4 center">Down</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 center">
+            <p>Balance</p>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-sm-4 center">Up</div>
+            <div class="col-sm-4 center">0</div>
+            <div class="col-sm-4 center">Down</div>
+        </div>
+    <div class="row">
+        <div class="col-sm-12 center">
+            <p>Volume</p>
+        </div>
+    </div>
+    <div class="row rowGap">
+            <div class="col-sm-4 center">Up</div>
+            <div class="col-sm-4 center">0</div>
+            <div class="col-sm-4 center">Down</div>
+    </div>
+    
+    <div class="row menuRow">
+        <div class="col-sm-12 center">
+            <button type="button" class="btn btn-lg btn-block" id="zoneMute">Mute ON/OFF</button>
+        </div>
+    </div>
+</div>
 </body>
+</html>
