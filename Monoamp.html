@@ -5,6 +5,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <script src="./Monoamp.js"></script>
     <script>
         // We'll run the AJAX query when the page loads.
@@ -15,13 +16,13 @@
 
 <body>
 
-<div class="menu container">
-    <div class="row rowGap">
+<div class="menu col-sm-12">
+    <div class="row rowGap control_label">
         <div class="col-sm-12 center">
             MultiZone Control
         </div>
     </div>
-    <div class="row menuRow">
+    <div class="row menuRow element">
         <div class="col-sm-12">
             <select id="zoneSelect" onchange="doAssignZone()">
                 <option value="10">All Zones</option>
@@ -34,12 +35,12 @@
             </select>
         </div>
     </div>
-    <div class="row menuRow">
+    <div class="row menuRow element">
         <div class="col-sm-12">
-            <button type="button" class="btn btn-block powerOff" id="zonePowerToggle" onclick="togglePower()">Zone Power OFF</button>
+            <button class="control_button powerOff" id="zonePowerToggle" onclick="togglePower()">Zone Power OFF</button>
         </div>
     </div>
-    <div class="row menuRow rowGap">
+    <div class="row menuRow rowGap element">
         <div class="col-sm-12">
             <select id="sourceSelect" onchange="doAssignSource()">
                 <option value="01">Turntable</option>
@@ -51,50 +52,50 @@
             </select>
         </div>
     </div>
-    <div class="row">
+    <div class="row control_label">
         <div class="col-sm-12 center">
             <p>Bass</p>
         </div>
     </div>
-    <div class="row">
-            <div class="col-sm-4 center">Up</div>
+    <div class="row element">
+            <div class="col-sm-4 center"><button class="control_button"><i class="fa fa-arrow-up" aria-hidden="true"></i></button></div>
             <div class="col-sm-4 center">0</div>
-            <div class="col-sm-4 center">Down</div>
+	    <div class="col-sm-4 center"><button class="control_button"><i class="fa fa-arrow-down" aria-hidden="true"></i></button></div>
     </div>
-    <div class="row">
+    <div class="row control_label">
         <div class="col-sm-12 center">
             <p>Treble</p>
         </div>
     </div>
-    <div class="row">
-            <div class="col-sm-4 center">Up</div>
+    <div class="row element">
+            <div class="col-sm-4 center"><button class="control_button"><i class="fa fa-arrow-up" aria-hidden="true"></i></button></div>
             <div class="col-sm-4 center">0</div>
-            <div class="col-sm-4 center">Down</div>
+	    <div class="col-sm-4 center"><button class="control_button"><i class="fa fa-arrow-down" aria-hidden="true"></i></button></div>
     </div>
-    <div class="row">
+    <div class="row control_label">
         <div class="col-sm-12 center">
             <p>Balance</p>
         </div>
     </div>
-        <div class="row">
-            <div class="col-sm-4 center">Up</div>
+        <div class="row element">
+            <div class="col-sm-4 center"><button class="control_button"><i class="fa fa-arrow-up" aria-hidden="true"></i></button></div>
             <div class="col-sm-4 center">0</div>
-            <div class="col-sm-4 center">Down</div>
+	    <div class="col-sm-4 center"><button class="control_button"><i class="fa fa-arrow-down" aria-hidden="true"></i></button></div>
         </div>
-    <div class="row">
+    <div class="row control_label">
         <div class="col-sm-12 center">
             <p>Volume</p>
         </div>
     </div>
-    <div class="row rowGap">
-            <div class="col-sm-4 center">Up</div>
+    <div class="row rowGap element">
+            <div class="col-sm-4 center"><button class="control_button"><i class="fa fa-arrow-up" aria-hidden="true"></i></button></div>
             <div class="col-sm-4 center">0</div>
-            <div class="col-sm-4 center">Down</div>
+	    <div class="col-sm-4 center"><button class="control_button"><i class="fa fa-arrow-down" aria-hidden="true"></i></button></div>
     </div>
     
-    <div class="row menuRow">
+    <div class="row menuRow element">
         <div class="col-sm-12 center">
-            <button type="button" class="btn btn-lg btn-block" id="zoneMute">Mute ON/OFF</button>
+            <button class="control_button" id="zoneMute">Mute ON/OFF</button>
         </div>
     </div>
 </div>
