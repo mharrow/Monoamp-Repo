@@ -1,19 +1,18 @@
 html *
 {
-   font-size: xx-large; 
+   font-size: 1.4em; 
    font-family: Arial;
 }
 
 body {
 height:100%;
+background-color: lightblue;
 	}
 
 
 .menu {
     color:black;
-    background-color:#6495ED;
-    height: 100vh;
-    width: 100vh;
+
 	}
 .rowGap{
     margin-bottom: 1em;
