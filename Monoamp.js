@@ -44,7 +44,7 @@ $.ajax({
 	success: function (resp){
 		var n = resp.length;
 		console.log ("Reply is:"+resp);
-		console.log ("Reply length is:"+n);
+		console.log ("Reply length is: "+n);
 		if (n == 31){
 			Zone = resp.substr(5,2);
 			Power_value = resp.substr(9,2);
@@ -53,7 +53,9 @@ $.ajax({
 			Treble_value = resp.substr(17,2);
 			Bass_value = resp.substr(19,2);
 			Balance_value = resp.substr(21,2);
-			Source_value = resp.substr(23,2);
+			Source_index = resp.substr(23,2);
+			var x = parseInt(Source_index, 10);
+			sourceSelect.options[x-1].selected = true;
 			console.log (" Zone is:"+Zone);
 			console.log (" PR Power_value is:"+Power_value);
 			console.log (" MU Mute_value is:"+Mute_value);
@@ -61,7 +63,7 @@ $.ajax({
 			console.log (" TR Treble_value is:"+Treble_value);
 			console.log (" BS Bass_value is:"+Bass_value);
 			console.log (" BL Balance_value is:"+Balance_value);
-			console.log (" CH Source_value is:"+Source_value);
+			console.log (" CH Source_value is:"+Source_index);
 		}
 	}
 	
