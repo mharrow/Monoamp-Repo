@@ -53,9 +53,11 @@ $.ajax({
 			Treble_value = resp.substr(17,2);
 			Bass_value = resp.substr(19,2);
 			Balance_value = resp.substr(21,2);
+			// parse source val -> convert to int -> assign query source
 			Source_index = resp.substr(23,2);
 			var x = parseInt(Source_index, 10);
 			sourceSelect.options[x-1].selected = true;
+			
 			console.log (" Zone is:"+Zone);
 			console.log (" PR Power_value is:"+Power_value);
 			console.log (" MU Mute_value is:"+Mute_value);
