@@ -176,21 +176,23 @@ function doAssignSource(){
 	}
 }
 
-function setPowerButton(newPowerState) {
+function setPower(newPowerState) {
     var powerButton = document.getElementById("zonePowerToggle");
     //powerOn is the last state of the button
     //if powerOn is the same as the new state, no need to do anything
-    if (newPowerState != controlStatus.Power.value) {
-        if (newPowerState) {
-            powerButton.className = powerButton.className.replace("powerOff", "powerOn");
-            powerButton.textContent = powerButton.textContent.replace("OFF", "ON");
-            powerOn = true;
-        } else {
-            powerButton.className = powerButton.className.replace("powerOn", "powerOff");
-            powerButton.textContent = powerButton.textContent.replace("ON", "OFF");
-            powerOn = false;
-        }
-    }
+    if (newPowerState) {
+        powerButton.className = powerButton.className.replace("powerOff", "powerOn");
+        powerButton.textContent = powerButton.textContent.replace("OFF", "ON");
+        controlStatus.Power.value = 1;
+    } else {
+        powerButton.className = powerButton.className.replace("powerOn", "powerOff");
+        powerButton.textContent = powerButton.textContent.replace("ON", "OFF");
+        controlStatus.Power.value = 0;
+    }    
+}
+
+function getValueString(value) {
+    return (value >= 10) ? value.toString() : "0" + value.toString();
 }
 
 function setControlStatus(resp)
@@ -204,8 +206,7 @@ function setControlStatus(resp)
         controlStatus.ObjectCode.unit = parseInt(resp.substr(5, 1));
         controlStatus.ObjectCode.zone = parseInt(resp.substr(6, 1));
 
-        controlStatus.Power.value = parseInt(resp.substr(9, 2));
-        setPowerButton(controlStatus.Power.value);
+        setPower(parseInt(resp.substr(9, 2)));
 
         controlStatus.Mute.value = parseInt(resp.substr(11, 2));
         controlStatus.Volume.value = parseInt(resp.substr(15, 2));
@@ -229,8 +230,4 @@ function setControlStatus(resp)
     } else {
         console.log("Response is incorrect format!");
     }
-}
-
-function getValueString(value) {
-    return (value >= 10) ? value.toString() : "0" + value.toString();
 }
