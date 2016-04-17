@@ -122,7 +122,7 @@ function serCmd(stringCmd){
 	    url:'/Monoamp_py.php',
 	    type: "POST",
 	    data: ({serStr: stringCmd}),
-	    success: setControlStatus(resp)
+	    success: function (resp) {setControlStatus(resp);}
     });
 }
 
