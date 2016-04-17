@@ -111,7 +111,7 @@ function run(){
     document.getElementById("zoneSelect").value = "11";
 	stringCmd =
         sendQuery
-        + controlStatus.ObjectCode.unit + "" + controlStatus.ObjectCode.zone;
+        + "11"
 	console.log("App start - Query status Zone 1:"+stringCmd);
 	serCmd(stringCmd);	// POST serial request for zone data
 	// all settings  first zone and power state of zone
