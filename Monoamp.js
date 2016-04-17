@@ -21,7 +21,7 @@ var controlStatus =
 
     Source:
     {
-        min: 0,
+        min: 1,
         max: 6,
         value: 0,
         commandKey: "CH"
