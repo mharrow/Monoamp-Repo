@@ -216,10 +216,10 @@ function setControlStatus(resp)
 		$('#ATTR_Volume_Label').text(controlStatus.Volume.value);
         
         controlStatus.Treble.value = parseInt(resp.substr(17, 2));
-        $('#ATTR_Treble_Label').text(controlStatus.Treble.value);
+        $('#ATTR_Treble_Label').text(controlStatus.Treble.value - 7);
         
         controlStatus.Bass.value = parseInt(resp.substr(19, 2));
-        $('#ATTR_Bass_Label').text(controlStatus.Bass.value);
+        $('#ATTR_Bass_Label').text(controlStatus.Bass.value - 7);
         
         controlStatus.Balance.value = parseInt(resp.substr(21, 2));
 
