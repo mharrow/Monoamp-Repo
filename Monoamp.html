@@ -17,14 +17,11 @@
 
 <body>
 <div class="col-sm-12 menu">
-    <div class="row title_label">
-        <div class="col-sm-12 center">
-            MultiZone Control
-        </div>
-    </div>
-    <div class="row element">
-        <div class="col-sm-12">
-            <select id="zoneSelect" onchange="doAssignZone()">
+	<div class="rowGap"></div>
+        <div class="row element">
+		<div class="col-sm-2 center"></div>
+        <div class="col-sm-8">
+            <select class="control_button" id="zoneSelect" onchange="doAssignZone()">
                 <option value="1">Master Bedroom</option>
                 <option value="2">Dining Room</option>
                 <option value="3">Living Room</option>
@@ -33,17 +30,18 @@
                 <option value="6">Office</option>
             </select>
         </div>
+        <div class="col-sm-2 center"></div>
     </div>
     <div class="rowGap"></div>
     <div class="row element">
 	    <div class="col-sm-12">
-            <button class="control_button powerOff" id="zonePowerToggle" onclick="togglePower()">Zone Power OFF</button>
+            <button class="powerOff control_button" id="zonePowerToggle" onclick="togglePower()">Zone Power OFF</button>
         </div>
     </div>
     <div class="rowGap"></div>
     <div class="row element">
         <div class="col-sm-12">
-            <select id="sourceSelect" onchange="doAssignSource()">
+            <select class="control_button" id="sourceSelect" onchange="doAssignSource()">
                 <option value="1">Turntable</option>
                 <option value="2">CD Player</option>
                 <option value="3">BlueTooth</option>
@@ -88,9 +86,11 @@
     </div>
     <div class="rowGap"></div>
     <div class="row menuRow element">
-        <div class="col-sm-12 center">
-            <button class="control_button" id="zoneMute">Mute ON/OFF</button>
+		<div class="col-sm-4 center"></div>
+		<div class="col-sm-4 center">
+            <button class="control_button" id="zoneMute">Mute</button>
         </div>
+        <div class="col-sm-4 center"></div>
     </div>
 </div>
 </body>
