@@ -1,69 +1,97 @@
 <html>
-	
-	
 <head>
-	<meta charset="utf-8" />
-    <link rel="stylesheet" href="Monoamp.css" type="text/css">
+    <meta charset="utf-8"/>
+
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Monoamp.css" type="text/css">
     <script src="./Monoamp.js"></script>
     <script>
-		// We'll run the AJAX query when the page loads.
-		window.onload=run;
-	</script>
+        // We'll run the AJAX query when the page loads.
+        window.onload = run;
+    </script>
 </head>
 
 
 <body>
-
-	<div class="menu">
-	<h2>MultiZone Control</h2>
-	
-	<p> Zone
-	
-	<select id="zoneSelect" class = "selection" onchange="doAssignZone()">
-		<option value="10">All Zones</option>	
-		<option value="11">Master Bedroom</option>
-		<option value="12">Dining Room</option>
-		<option value="13">Living Room</option>
-		<option value="14">Jordan's Room</option>
-		<option value="15">Rec Room</option>
-		<option value="16">Office</option>
-	</select>	
-	</p>
-		
-	<p> 
-		<button type ="button" class = "powerOff" id = "zonePowerToggle" onclick = "togglePower()">Zone Power OFF</button>
-	</p>
-	
-	<p> Source 
-	
-	<select class = "selection" id="sourceSelect" onchange="doAssignSource()">
-		<option value="01">Turntable</option>
-		<option value="02">CD Player</option>
-		<option value="03">BlueTooth</option>
-		<option value="04">Source 4</option>
-		<option value="05">Source 5</option>
-		<option value="06">Source 6</option>
-	</select>
-	</p>
-	
-	<p> Bass
-		<input type="range" id="BS" defaultValue="7" max="14">
-	</p>
-
-	<p> Treble
-		<input type="range" id="TR" value="7" max="14">
-	</p>
-	
-	<p> Balance
-		<input type="range" id="BL" value="10" max="20">
-	</p>
-	
-	<p> Volume
-		<input type="range" id="VO" value="19" max="38">
-	</p>	
-
-	<p>
-		<button type="button" class="muteoff" id ="zoneMute">Mute ON/OFF</button>
-	</p>
+<div class="col-sm-12 menu">
+	<div class="rowGap"></div>
+        <div class="row element">
+		<div class="col-sm-2 center"></div>
+        <div class="col-sm-8">
+            <select class="control_button" id="zoneSelect" onchange="doAssignZone()">
+                <option value="1">Master Bedroom</option>
+                <option value="2">Dining Room</option>
+                <option value="3">Living Room</option>
+                <option value="4">Jordan's Room</option>
+                <option value="5">Rec Room</option>
+                <option value="6">Office</option>
+            </select>
+        </div>
+        <div class="col-sm-2 center"></div>
+    </div>
+    <div class="rowGap"></div>
+    <div class="row element">
+	    <div class="col-sm-12">
+            <button class="powerOff control_button" id="zonePowerToggle" onclick="togglePower()">Zone Power OFF</button>
+        </div>
+    </div>
+    <div class="rowGap"></div>
+    <div class="row element">
+        <div class="col-sm-12">
+            <select class="control_button" id="sourceSelect" onchange="doAssignSource()">
+                <option value="1">Turntable</option>
+                <option value="2">CD Player</option>
+                <option value="3">BlueTooth</option>
+                <option value="4">Source 4</option>
+                <option value="5">Source 5</option>
+                <option value="6">Source 6</option>
+            </select>
+        </div>
+    </div>
+    <div class="rowGap"></div>
+    <div class="row element">
+        <div class="col-sm-4 center"><button class="control_button" id="ATTR_Treble_DOWN"><i class="fa fa-arrow-down" aria-hidden="true"></i></button></div>
+            <div class="col-sm-4"> 
+				<div class="row">
+					<div class="col-sm-4 control_label center">Treble</div>
+					<div class="col-sm-4 control_label center" id="ATTR_Treble_Label">0</div>
+				</div>
+            </div>
+	    <div class="col-sm-4 center"><button class="control_button" id="ATTR_Treble_UP"><i class="fa fa-arrow-up" aria-hidden="true"></i></button></div>
+    </div>
+    <div class="rowGap"></div>
+    <div class="row element">
+		<div class="col-sm-4 center"><button class="control_button" id ="ATTR_Bass_DOWN"><i class="fa fa-arrow-down" aria-hidden="true"></i></button></div>
+			 <div class="col-sm-4"> 	
+				<div class="row">
+					<div class="col-sm-4 control_label center">Bass</div>
+					<div class="col-sm-4 control_label center" id="ATTR_Bass_Label">0</div>
+				</div>
+			</div>	    
+		<div class="col-sm-4 center"><button class="control_button" id="ATTR_Bass_UP"><i class="fa fa-arrow-up" aria-hidden="true"></i></button></div>
+    </div>
+    <div class="rowGap"></div>
+    <div class="row element">
+		<div class="col-sm-4 center"><button class="control_button" id="ATTR_Volume_DOWN"><i class="fa fa-arrow-down" aria-hidden="true"></i></button></div>
+			 <div class="col-sm-4"> 	
+				<div class="row">
+					<div class="col-sm-4 control_label center">Volume</div>
+					<div class="col-sm-4 control_label center" id="ATTR_Volume_Label">0</div>
+				</div>
+			</div>	    
+	    <div class="col-sm-4 center"><button class="control_button" id="ATTR_Volume_UP"><i class="fa fa-arrow-up" aria-hidden="true"></i></button></div>
+    </div>
+    <div class="rowGap"></div>
+    <div class="row menuRow element">
+		<div class="col-sm-4 center"></div>
+		<div class="col-sm-4 center">
+            <button class="control_button" id="zoneMute">Mute</button>
+        </div>
+        <div class="col-sm-4 center"></div>
+    </div>
+</div>
 </body>
+</html>
