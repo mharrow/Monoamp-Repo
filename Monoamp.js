@@ -211,9 +211,16 @@ function setControlStatus(resp)
         setPower(parseInt(resp.substr(9, 2)));
 
         controlStatus.Mute.value = parseInt(resp.substr(11, 2));
+        
         controlStatus.Volume.value = parseInt(resp.substr(15, 2));
+		$('#ATTR_Volume_Label').text(controlStatus.Volume.value);
+        
         controlStatus.Treble.value = parseInt(resp.substr(17, 2));
+        $('#ATTR_Treble_Label').text(controlStatus.Treble.value);
+        
         controlStatus.Bass.value = parseInt(resp.substr(19, 2));
+        $('#ATTR_Bass_Label').text(controlStatus.Bass.value);
+        
         controlStatus.Balance.value = parseInt(resp.substr(21, 2));
 
         controlStatus.Source.value = parseInt(resp.substr(23, 2));
