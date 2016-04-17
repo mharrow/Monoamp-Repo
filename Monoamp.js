@@ -95,12 +95,13 @@ function run(){
             }
         } else { //button direction is down
             if (controlAttribute.value - 1 >= controlAttribute.min) {
-                sendCommand 
-                    + controlStatus.ObjectCode.unit + "" + controlStatus.ObjectCode.zone 
-                    + controlAttribute.commandKey
-                    + getValueString(controlAttribute.value - 1);
-                console.log("Scale button action to Post: " + stringCmd);
-                serCmd(stringCmd);
+                stringCmd =
+					sendCommand 
+					+ controlStatus.ObjectCode.unit + "" + controlStatus.ObjectCode.zone 
+					+ controlAttribute.commandKey
+					+ getValueString(controlAttribute.value - 1);
+				console.log("Scale button action to Post: " + stringCmd);
+				serCmd(stringCmd);
             } else {
                 console.log("Scale command out of range");
             }
