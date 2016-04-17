@@ -123,7 +123,7 @@ function serCmd(stringCmd){
 	    type: "POST",
 	    data: ({serStr: stringCmd}),
 	    success: setControlStatus(resp)
-    });
+	});
 }
 
 function doAssignZone(){
