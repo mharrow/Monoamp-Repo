@@ -206,6 +206,7 @@ function setControlStatus(resp)
         //control object code are what these values represent as a pair
         controlStatus.ObjectCode.unit = parseInt(resp.substr(5, 1));
         controlStatus.ObjectCode.zone = parseInt(resp.substr(6, 1));
+        zoneSelect.options[controlStatus.ObjectCode.zone - 1].selected = true;
 
         setPower(parseInt(resp.substr(9, 2)));
 
