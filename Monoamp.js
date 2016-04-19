@@ -108,6 +108,32 @@ function run(){
         }
     });
 
+    $("[id^=TOGGLE_]").click(function () {
+        //if power is on, send message to turn off
+        //DO NOT SET BUTTON UNTIL RECIEVE A RESPONSE
+        console.log("Toggle Pressed: " + this.id);
+        var toggleStats = this.id.split("_"),
+            toggleType = toggleStats[1];
+
+        if (controlStatus[toggleType].value) {
+            //disable source selection and power off selected zone
+            stringCmd =
+                sendCommand
+                + controlStatus.ObjectCode.unit + "" + controlStatus.ObjectCode.zone
+                + controlStatus[toggleType].commandKey
+                + "00";
+        } else {
+            stringCmd =
+                sendCommand
+                + controlStatus.ObjectCode.unit + "" + controlStatus.ObjectCode.zone
+                + controlStatus[toggleType].commandKey
+                + "01";
+        }
+
+        console.log(toggleType + " Command to Post:" + stringCmd);
+        serCmd(stringCmd); // POST Zone power off to php serial
+    });
+
     document.getElementById("zoneSelect").value = "11";
 	stringCmd =
         sendQuery
@@ -136,31 +162,6 @@ function doAssignZone(){
 	serCmd(stringCmd);	// POST serial command to php
 }
 
-function togglePower() {
-    //if power is on, send message to turn off
-    //DO NOT SET BUTTON UNTIL RECIEVE A RESPONSE
-
-	if (controlStatus.Power.value) {
-	//disable source selection and power off selected zone
-		stringCmd =
-            sendCommand
-            + controlStatus.ObjectCode.unit + "" + controlStatus.ObjectCode.zone
-            + controlStatus.Power.commandKey
-            + "00";
-		}
-	else {
-		stringCmd =
-            sendCommand
-            + controlStatus.ObjectCode.unit + "" + controlStatus.ObjectCode.zone
-            + controlStatus.Power.commandKey
-            + "01";
-	}
-
-	console.log("Power Command to Post:" + stringCmd);
-	serCmd(stringCmd);  // POST Zone power off to php serial
-}
-
-
 function doAssignSource(){
     controlStatus.Source.value = document.getElementById("sourceSelect").value;
 	if (controlStatus.Power.value){
@@ -178,7 +179,7 @@ function doAssignSource(){
 }
 
 function setPower(newPowerState) {
-    var powerButton = document.getElementById("zonePowerToggle");
+    var powerButton = document.getElementById("TOGGLE_Power");
     //powerOn is the last state of the button
     //if powerOn is the same as the new state, no need to do anything
     if (newPowerState) {
