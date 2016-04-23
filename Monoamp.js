@@ -141,17 +141,36 @@ function run(){
 	console.log("App start - Query status Zone 1:"+stringCmd);
 	serCmd(stringCmd);	// POST serial request for zone data
 	// all settings  first zone and power state of zone
+	
+	// POST mysql request for zone names
+	populateMenu = "zones";
+	queryMySql(populateMenu);
 	}
 
 function serCmd(stringCmd){
 	// call ajax data = stringCmd to be sent out the serial port
     $.ajax({
 	    url:'/Monoamp_py.php',
+	    async: false,
 	    type: "POST",
 	    data: ({serStr: stringCmd}),
 	    success: function (resp) {setControlStatus(resp);}
     });
 }
+
+function queryMySql(populateMenu){
+	// call ajax data = populateMenu from mysql database
+	$.ajax({
+		url:'/madAmpQuery.php',
+		async: false,
+		data:({queryDb: populateMenu}),
+		success: function (resp)
+		{
+			setMenuZone(resp);
+		}
+	});
+}
+		
 
 function doAssignZone(){
     controlStatus.ObjectCode.zone = document.getElementById("zoneSelect").value;
@@ -197,10 +216,15 @@ function getValueString(value) {
     return (value >= 10) ? value.toString() : "0" + value.toString();
 }
 
+function setMenuZone(resp)
+{
+	console.log("madAmp mysql data: " + resp);
+}	
+
 function setControlStatus(resp)
 {
     var n = resp.length;
-    console.log ("Reply is: " + resp);
+    //console.log ("Reply is: " + resp);
     console.log ("Reply length is: " + n);
     if (n == 31) {
         //splitting the zone into unit and zone
