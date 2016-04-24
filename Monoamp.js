@@ -143,7 +143,7 @@ function run(){
 	// all settings  first zone and power state of zone
 	
 	// POST mysql request for zone names
-	populateMenu = "zones";
+	var populateMenu = "zones";
 	queryMySql(populateMenu);
 	}
 
@@ -151,7 +151,6 @@ function serCmd(stringCmd){
 	// call ajax data = stringCmd to be sent out the serial port
     $.ajax({
 	    url:'/Monoamp_py.php',
-	    async: false,
 	    type: "POST",
 	    data: ({serStr: stringCmd}),
 	    success: function (resp) {setControlStatus(resp);}
@@ -162,12 +161,9 @@ function queryMySql(populateMenu){
 	// call ajax data = populateMenu from mysql database
 	$.ajax({
 		url:'/madAmpQuery.php',
-		async: false,
 		data:({queryDb: populateMenu}),
-		success: function (resp)
-		{
-			setMenuZone(resp);
-		}
+		dataType:"json",
+		success: function (resp) {setMenuZone(resp);}
 	});
 }
 		
@@ -218,11 +214,14 @@ function getValueString(value) {
 
 function setMenuZone(resp)
 {
-	console.log("madAmp mysql data: " + resp);
+	debugger;
+	var n = resp.length;
+	console.log("madAmp mysql resp data length: " + n);
 }	
 
 function setControlStatus(resp)
-{
+{// This is the best way to perform an SQL query
+// For more examples, see mysql_real_escape_string()
     var n = resp.length;
     //console.log ("Reply is: " + resp);
     console.log ("Reply length is: " + n);
