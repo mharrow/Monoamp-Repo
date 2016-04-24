@@ -150,7 +150,7 @@ function run(){
 function serCmd(stringCmd){
 	// call ajax data = stringCmd to be sent out the serial port
     $.ajax({
-	    url:'/Monoamp_py.php',
+	    url:'/Server/Php/madAmpPythonMessenger.php',
 	    type: "POST",
 	    data: ({serStr: stringCmd}),
 	    success: function (resp) {setControlStatus(resp);}
@@ -160,7 +160,7 @@ function serCmd(stringCmd){
 function queryMySql(populateMenu){
 	// call ajax data = populateMenu from mysql database
 	$.ajax({
-		url:'/madAmpQuery.php',
+		url:'/Server/Php/madAmpMySqlQuery.php',
 		data:({queryDb: populateMenu}),
 		dataType:"json",
 		success: function (resp) {setMenuZone(resp);}
