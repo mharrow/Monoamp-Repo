@@ -150,7 +150,7 @@ function run(){
 function serCmd(stringCmd){
 	// call ajax data = stringCmd to be sent out the serial port
     $.ajax({
-	    url:'/Server/Php/madAmpPythonMessenger.php',
+	    url:'/Server/madAmpPythonMessenger.php',
 	    type: "POST",
 	    data: ({serStr: stringCmd}),
 	    success: function (resp) {setControlStatus(resp);}
@@ -160,7 +160,7 @@ function serCmd(stringCmd){
 function queryMySql(populateMenu){
 	// call ajax data = populateMenu from mysql database
 	$.ajax({
-		url:'/Server/Php/madAmpMySqlQuery.php',
+		url:'/Server/madAmpMySqlQuery.php',
 		data:({queryDb: populateMenu}),
 		dataType:"json",
 		success: function (resp) {setMenuZone(resp);}
@@ -214,16 +214,29 @@ function getValueString(value) {
 
 function setMenuZone(resp)
 {
-	debugger;
-	var n = resp.length;
-	console.log("madAmp mysql resp data length: " + n);
-}	
+	console.log("madAmp mysql array data: " );
+		
+	var [zone1Options,zone2Options,zone3Options,zone4Options,zone5Options,zone6Options] = resp;
+	var zone1Name = zone1Options.zoneName;
+	var zone2Name = zone2Options.zoneName;
+	var zone3Name = zone3Options.zoneName;
+	var zone4Name = zone4Options.zoneName;
+	var zone5Name = zone5Options.zoneName;
+	var zone6Name = zone6Options.zoneName;
+	console.log("Zone Menu Option List: ");
+	console.log(zone1Name);
+	console.log(zone2Name);
+	console.log(zone3Name);
+	console.log(zone4Name);
+	console.log(zone5Name);
+	console.log(zone6Name);
+	
+}
 
 function setControlStatus(resp)
 {// This is the best way to perform an SQL query
 // For more examples, see mysql_real_escape_string()
     var n = resp.length;
-    //console.log ("Reply is: " + resp);
     console.log ("Reply length is: " + n);
     if (n == 31) {
         //splitting the zone into unit and zone
