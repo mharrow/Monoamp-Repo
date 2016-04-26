@@ -215,7 +215,6 @@ function getValueString(value) {
 function setMenuZone(resp)
 {
 	console.log("madAmp mysql array data: " );
-		
 	var [zone1Options,zone2Options,zone3Options,zone4Options,zone5Options,zone6Options] = resp;
 	var zone1Name = zone1Options.zoneName;
 	var zone2Name = zone2Options.zoneName;
