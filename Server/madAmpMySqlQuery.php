@@ -5,6 +5,7 @@
 
 // query command from javascript ajax call
 // $command = $_POST['queryDb']
+// not useing command passed from javascript
 
 $link = mysql_connect("localhost", "root", "udooer");
 
@@ -20,12 +21,25 @@ $query = sprintf("SELECT * FROM `zones`");
 $result = mysql_query($query);
 
 // read result into array
-$data = array();
+$madAmpData = array();
 
 while(($row = mysql_fetch_assoc($result))) {
-	$data[] = $row;
+	$madAmpData[] = $row;
 }
 
+$query = sprintf("SELECT * FROM `sources`");
+$result = mysql_query($query);
+
+while(($row = mysql_fetch_assoc($result))) {
+	$madAmpData[] = $row;
+}
+
+$query = sprintf("SELECT * FROM `attributes`");
+$result = mysql_query($query);
+
+while(($row = mysql_fetch_assoc($result))) {
+	$madAmpData[] = $row;
+}
 // close mysql connection
 mysql_close($link);
 
@@ -33,6 +47,6 @@ mysql_close($link);
 // This is done automatically at the end of the script
 mysql_free_result($result);
 
-echo json_encode($data);
+echo json_encode($madAmpData);
 
 ?>

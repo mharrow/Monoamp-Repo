@@ -215,21 +215,18 @@ function getValueString(value) {
 function setMenuZone(resp)
 {
 	console.log("madAmp mysql array data: " );
-	var [zone1Options,zone2Options,zone3Options,zone4Options,zone5Options,zone6Options] = resp;
-	var zone1Name = zone1Options.zoneName;
-	var zone2Name = zone2Options.zoneName;
-	var zone3Name = zone3Options.zoneName;
-	var zone4Name = zone4Options.zoneName;
-	var zone5Name = zone5Options.zoneName;
-	var zone6Name = zone6Options.zoneName;
-	console.log("Zone Menu Option List: ");
-	console.log(zone1Name);
-	console.log(zone2Name);
-	console.log(zone3Name);
-	console.log(zone4Name);
-	console.log(zone5Name);
-	console.log(zone6Name);
 	
+	var [zone1Options,zone2Options,zone3Options,zone4Options,zone5Options,zone6Options,
+		source1,source2,source3,source4,source5,source6,
+		attributesTR,attributesBS,attributesBL,attributesVO,attributesDT,attributesMU] = resp;
+		
+	console.log("Zone 1 Name: " + zone1Options.zoneName);
+	console.log("Zone 1 Name: " + resp[0][1]);
+	
+	console.log("Source 1 Name: " + source1.sourceName);
+	
+	console.log("MU Display Status: " + attributesMU.visibleStatus);
+
 }
 
 function setControlStatus(resp)
