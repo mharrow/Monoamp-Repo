@@ -1,8 +1,11 @@
 var sendCommand = "<",
     sendQuery = "?",
     stringCmd = "",
-    resp = "";
-
+    resp = "",
+	zoneSettings = "",
+	sourceSettings = "",
+	attributeSettings = "";
+	
 var controlStatus =
 {
     ObjectCode:
@@ -70,7 +73,7 @@ var controlStatus =
 };
 
 function run(){
-	// on load of window set zoneSelect to first zone and query status
+	// on load of window set zone_select to first zone and query status
 	// from MonoAmp use result to set powerOn variable and all other
 	// parameters
     
@@ -134,7 +137,7 @@ function run(){
         serCmd(stringCmd); // POST Zone power off to php serial
     });
 
-    document.getElementById("zoneSelect").value = "11";
+    document.getElementById("zone_select").value = "11";
 	stringCmd =
         sendQuery
         + "11"
@@ -163,13 +166,13 @@ function queryMySql(populateMenu){
 		url:'/Server/madAmpMySqlQuery.php',
 		data:({queryDb: populateMenu}),
 		dataType:"json",
-		success: function (resp) {setMenuZone(resp);}
+		success: function (resp) {parseMenuSettings(resp);}
 	});
 }
 		
 
 function doAssignZone(){
-    controlStatus.ObjectCode.zone = document.getElementById("zoneSelect").value;
+    controlStatus.ObjectCode.zone = document.getElementById("zone_select").value;
 	stringCmd =
         sendQuery
         + controlStatus.ObjectCode.unit + "" + controlStatus.ObjectCode.zone;
@@ -178,7 +181,7 @@ function doAssignZone(){
 }
 
 function doAssignSource(){
-    controlStatus.Source.value = document.getElementById("sourceSelect").value;
+    controlStatus.Source.value = document.getElementById("source_select").value;
 	if (controlStatus.Power.value){
 	    stringCmd = 
             sendCommand 
@@ -212,21 +215,30 @@ function getValueString(value) {
     return (value >= 10) ? value.toString() : "0" + value.toString();
 }
 
-function setMenuZone(resp)
-{
-	console.log("madAmp mysql array data: " );
-	
-	var [zone1Options,zone2Options,zone3Options,zone4Options,zone5Options,zone6Options,
-		source1,source2,source3,source4,source5,source6,
-		attributesTR,attributesBS,attributesBL,attributesVO,attributesDT,attributesMU] = resp;
+function populateSelectMenu(id, settingType) {
+	var idType = id.split("_")[0],
+		selectMenu = $("#" + id);
 		
-	console.log("Zone 1 Name: " + zone1Options.zoneName);
-	console.log("Zone 1 Name: " + resp[0][1]);
+	selectMenu.empty();
 	
-	console.log("Source 1 Name: " + source1.sourceName);
+	for (var i in settingType){
+		selectMenu.append("<option value=\"" + (parseInt(i)+1) + "\">" +
+			settingType[i][idType + "Name"] + "</option>");
+	}
 	
-	console.log("MU Display Status: " + attributesMU.visibleStatus);
-
+}	
+function parseMenuSettings(resp)
+{
+		
+	zoneSettings = resp.slice(0,6);
+	sourceSettings = resp.slice(6,12);
+	attributeSettings = resp.slice(12,18);
+	console.log("Attribute Settings: ");
+	console.log(attributeSettings[4].id);
+	console.log(attributeSettings[4].control);
+	console.log(attributeSettings[4].visibleStatus);
+	populateSelectMenu("zone_select",zoneSettings);
+	populateSelectMenu("source_select",sourceSettings);
 }
 
 function setControlStatus(resp)
@@ -239,8 +251,8 @@ function setControlStatus(resp)
         //control object code are what these values represent as a pair
         controlStatus.ObjectCode.unit = parseInt(resp.substr(5, 1));
         controlStatus.ObjectCode.zone = parseInt(resp.substr(6, 1));
-        zoneSelect.options[controlStatus.ObjectCode.zone - 1].selected = true;
-
+        $('#zone_select')[0].value = controlStatus.ObjectCode.zone.toString();
+        
         setPower(parseInt(resp.substr(9, 2)));
 
         controlStatus.Mute.value = parseInt(resp.substr(11, 2));
@@ -257,7 +269,7 @@ function setControlStatus(resp)
         controlStatus.Balance.value = parseInt(resp.substr(21, 2));
 
         controlStatus.Source.value = parseInt(resp.substr(23, 2));
-        sourceSelect.options[controlStatus.Source.value - 1].selected = true;
+        $('#source_select')[0].value = controlStatus.Source.value.toString();
 
         //log the controlStatus object
         console.log("[setting controls] Zone is: " + controlStatus.ObjectCode.unit
