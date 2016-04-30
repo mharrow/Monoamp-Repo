@@ -1,11 +1,8 @@
 <?php
-//
+
 // hostname, username, password - set them according to your setup
-//
-// query command from javascript ajax call
-// $command = $_POST['queryDb']
-// not useing command passed from javascript
-$link = mysql_connect("localhost", "root", "udooer");
+
+$link = mysql_connect("localhost", "root", "password");
 // select database
 mysql_select_db("madAmp", $link);
 // Formulate Query
@@ -31,9 +28,12 @@ while(($row = mysql_fetch_assoc($result))) {
 	$madAmpData[] = $row;
 }
 // close mysql connection
+/*
 mysql_close($link);
 // Free the resources associated with the result set
 // This is done automatically at the end of the script
-mysql_free_result($result);
-echo json_encode($madAmpData);
+mysql_free_result($result);*/
+
+$res = json_encode($madAmpData);
+echo $res;
 ?>

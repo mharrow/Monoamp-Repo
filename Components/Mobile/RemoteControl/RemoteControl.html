@@ -1,29 +1,11 @@
-<html>
-<head>
-    <meta charset="utf-8"/>
-
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./RemoteControl.css" type="text/css">
-    <script src="./RemoteControl.js"></script>
-    <script>
-        // We'll run the AJAX query when the page loads.
-        window.onload = run;
-    </script>
-</head>
-
-
-<body>
 <div class="col-sm-12 menu">
 	<div class="rowGap"></div>
         <div class="row element">
 		<div class="col-sm-1 center"></div>
         <div class="col-sm-10">
-            <select class="control_button" id="zone_select" onchange="doAssignZone()">
-                
-            </select>
+        <select class="control_button" id="zone_select" onchange="doAssignZone()" ng-model="selectedZone" required 
+        	ng-options="zone.positionAddress as zone.zoneName for zone in zoneSettings">
+        </select>
         </div>
         <div class="col-sm-1 center"></div>
     </div>
@@ -38,8 +20,8 @@
     <div class="rowGap"></div>
     <div class="row element">
         <div class="col-sm-12">
-            <select class="control_button" id="source_select" onchange="doAssignSource()">
-                
+            <select class="control_button" id="source_select" onchange="doAssignSource()" ng-model="selectedSource" required
+            	ng-options="source.positionAddress as source.sourceName for source in sourceSettings">
             </select>
         </div>
     </div>
@@ -89,5 +71,4 @@
 		<div class="col-sm-1 center"></div>
 	</div>
 </div>
-</body>
-</html>
+

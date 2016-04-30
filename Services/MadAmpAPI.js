@@ -1,17 +1,13 @@
 (function(){
-	
     'use strict';
-
+    
 	angular.module('MadAmpApp').
 	  factory('MadAmpAPIservice', function($http) {
 	
 	    var MadAmpAPI = {};
 	
-	    MadAmpAPI.getSettings = function(populateMenu) {
-	      return $http({
-	        method: 'GET', 
-	        url:'/Server/madAmpMySqlQuery.php',
-	      });
+	    MadAmpAPI.getSettings = function() {
+	      return $http({method:'GET', url:'/Server/madAmpMySqlQuery.php'});
 	    }
 	    
 	    
