@@ -3,7 +3,7 @@
         <div class="row element">
 		<div class="col-sm-1 center"></div>
         <div class="col-sm-10">
-        <select class="control_button" id="zone_select" onchange="doAssignZone()" ng-model="selectedZone" required 
+        <select class="control_button" id="zone_select" onchange="doAssignZone()" ng-model="controlStatus.ObjectCode.zone" required 
         	ng-options="zone.positionAddress as zone.zoneName for zone in zoneSettings">
         </select>
         </div>
@@ -20,7 +20,7 @@
     <div class="rowGap"></div>
     <div class="row element">
         <div class="col-sm-12">
-            <select class="control_button" id="source_select" onchange="doAssignSource()" ng-model="selectedSource" required
+            <select class="control_button" id="source_select" onchange="doAssignSource()" ng-model="controlStatus.Source.value" required
             	ng-options="source.positionAddress as source.sourceName for source in sourceSettings">
             </select>
         </div>
