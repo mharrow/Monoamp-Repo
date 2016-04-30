@@ -213,19 +213,7 @@
 		function getValueString(value) {
 		    return (value >= 10) ? value.toString() : "0" + value.toString();
 		}
-		
-		function populateSelectMenu(id, settingType) {
-			var idType = id.split("_")[0],
-				selectMenu = $("#" + id);
-				
-			selectMenu.empty();
 			
-			for (var i in settingType){
-				selectMenu.append("<option value=\"" + (parseInt(i)+1) + "\">" +
-					settingType[i][idType + "Name"] + "</option>");
-			}
-			
-		}	
 		function parseMenuSettings(resp)
 		{
 			$scope.zoneSettings = resp.slice(0,6);
