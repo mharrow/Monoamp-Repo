@@ -1,3 +1,31 @@
-<script>
-	window.location = "./Components/Mobile/RemoteControl/RemoteControl.html"
-</script>
+<html ng-app="MadAmpApp">
+	<head>
+	    <meta charset="utf-8"/>
+	    
+	    <!-- Vendor css -->
+	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		
+		<!-- app css -->
+	    <link rel="stylesheet" href="./Components/Mobile/RemoteControl/RemoteControl.css" type="text/css">
+	    
+	    <!-- Vendor Scripts -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+	    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	    
+	    <!-- app scripts -->
+	    <script src="./MadAmpApp.js" ng-module="MadAmpApp"></script>	    
+	    <script src="./Services/MadAmpAPI.js"></script>
+	    <script src="./Components/Mobile/RemoteControl/RemoteControl.js"></script>
+	    
+	    <!-- app services -->
+
+	    
+	</head>
+	<body ng-app="MadAmpApp">
+		<ng-view></ng-view>
+	</body>
+</html>
