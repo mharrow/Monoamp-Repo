@@ -18,7 +18,7 @@ $command = $_POST['serStr'];
 
 // python argument must be in quotes - commands have < as start character
 // that causes error bash: argv: No such file or directory
-$str = "python Drivers/rs232_handler.py " . chr(39) . $command . chr(39);
+$str = "python Drivers/temp_rs232_handler.py " . chr(39) . $command . chr(39);
 
 exec($str, $output);
 //console_log($output);
