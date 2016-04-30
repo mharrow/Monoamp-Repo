@@ -15,9 +15,8 @@
 	      return $http({
 	        method: 'POST', 
 	        url:'/Server/madAmpPythonMessenger.php',
-	        Content-Type: text/xml; charset=utf-8;
-			data: ({serStr: stringCmd})
-			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			data: ({serStr: stringCmd}),
+			headers: {'Content-Type': 'text/xml'},
 	      });
 	    }
 	    
