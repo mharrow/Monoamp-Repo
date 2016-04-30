@@ -1,11 +1,6 @@
 <?php
 
 // Function to log PHP activity
-function console_log($data){
-	echo '<script>';
-	echo 'console.log('. json_encode($data) .')';
-	echo '</script>';
-}
 // Prevent caching.
 header('Cache-Control: no-cache, must-revalidate');
 header('Expires: Mon, 01 Jan 1996 00:00:00 GMT');
