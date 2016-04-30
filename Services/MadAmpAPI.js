@@ -16,6 +16,7 @@
 	        method: 'POST', 
 	        url:'/Server/madAmpPythonMessenger.php',
 			data: ({serStr: stringCmd})
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 	      });
 	    }
 	    
