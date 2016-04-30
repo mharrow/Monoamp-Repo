@@ -169,6 +169,7 @@
 		    MadAmpAPIservice.sendCommand(stringCmd).success(function(resp) 
 		    {
 		    	setControlStatus(resp);
+		    	
 		    });
 		}
 

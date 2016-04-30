@@ -7,7 +7,10 @@
 	    var MadAmpAPI = {};
 	
 	    MadAmpAPI.getSettings = function() {
-	      return $http({method:'GET', url:'/Server/madAmpMySqlQuery.php'});
+	      return $http({
+			method:'GET',
+			url:'/Server/madAmpMySqlQuery.php'
+			});
 	    }
 	    
 	    
@@ -15,9 +18,9 @@
 	      return $http({
 	        method: 'POST', 
 	        url:'/Server/madAmpPythonMessenger.php',
-			data: ({serStr: stringCmd}),
-			headers: {'Content-Type': 'text/xml'},
-	      });
+	        data: {serStr:stringCmd},
+			headers: {'Content-Type': 'application/json'},
+			});
 	    }
 	    
 	    return MadAmpAPI;	    
