@@ -13,16 +13,18 @@ header('Expires: Mon, 01 Jan 1996 00:00:00 GMT');
 // The JSON standard MIME header.
 // header('Content-type: application/json; charset=utf-8', true);
 // ini_set('display_errors', '1');
+// $data = file_get_contents("php://input");
+// $command = $_POST['serStr'];
 
-$command = $_POST['serStr'];
+$command = json_decode(file_get_contents('php://input'), true);
 
 // python argument must be in quotes - commands have < as start character
 // that causes error bash: argv: No such file or directory
-$str = "python Drivers/temp_rs232_handler.py " . chr(39) . $command . chr(39);
+$str = "python Drivers/rs232_handler.py " . chr(39) . $command['serStr'] . chr(39);
 
 exec($str, $output);
-//console_log($output);
-// echo array as string back to javascript - ajax call response
+
+//echo array as string back to javascript - ajax call response
 echo $output[0];
 
 
