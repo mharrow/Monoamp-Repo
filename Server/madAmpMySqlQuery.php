@@ -2,7 +2,7 @@
 
 // hostname, username, password - set them according to your setup
 
-$link = mysql_connect("localhost", "root", "udooer");
+$link = mysql_connect("localhost", "root", "password");
 // select database
 mysql_select_db("madAmp", $link);
 // Formulate Query
