@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2016 at 11:36 AM
+-- Generation Time: May 01, 2016 at 08:29 PM
 -- Server version: 5.5.49-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.16
 
@@ -28,20 +28,27 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `attributes` (
   `control` text NOT NULL,
-  `visibleStatus` tinyint(1) NOT NULL
+  `visibleStatus` tinyint(1) NOT NULL,
+  `displayName` varchar(30) DEFAULT NULL,
+  `upIcon` varchar(30) DEFAULT NULL,
+  `downIcon` varchar(30) DEFAULT NULL,
+  `min` int(11) DEFAULT NULL,
+  `max` int(11) DEFAULT NULL,
+  `type` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `attributes`
 --
 
-INSERT INTO `attributes` (`control`, `visibleStatus`) VALUES
-('TR', 1),
-('BS', 1),
-('BL', 0),
-('VO', 1),
-('DT', 0),
-('MU', 1);
+INSERT INTO `attributes` (`control`, `visibleStatus`, `displayName`, `upIcon`, `downIcon`, `min`, `max`, `type`) VALUES
+('TR', 1, 'Treble', 'fa fa-chevron-up', 'fa fa-chevron-down', 0, 14, 'range'),
+('BS', 1, 'Bass', 'fa fa-chevron-up', 'fa fa-chevron-down', 0, 14, 'range'),
+('BL', 0, 'Balance', 'fa fa-chevron-up', 'fa fa-chevron-down', 0, 20, 'range'),
+('VO', 1, 'Volume', 'fa fa-volume-up', 'fa fa-volume-down', 0, 38, 'range'),
+('CH', 1, 'Source', NULL, NULL, 1, 6, 'dropDown'),
+('PR', 1, 'Zone Power Off', NULL, NULL, 0, 1, 'toggle'),
+('MU', 1, 'Mute', NULL, NULL, 0, 1, 'toggle');
 
 -- --------------------------------------------------------
 
