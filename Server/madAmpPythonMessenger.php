@@ -15,7 +15,7 @@ $command = json_decode(file_get_contents('php://input'), true);
 
 // python argument must be in quotes - commands have < as start character
 // that causes error bash: argv: No such file or directory
-$str = "python Drivers/rs232_handler.py " . chr(39) . $command['serStr'] . chr(39);
+$str = "python Drivers/rs232_simulator.py " . chr(39) . $command['serStr'] . chr(39);
 
 exec($str, $output);
 
