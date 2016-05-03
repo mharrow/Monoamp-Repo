@@ -61,8 +61,8 @@
 		            stringCmd =
 		                sendCommand
 		                + $scope.controlStatus.ObjectCode.unit + "" + $scope.controlStatus.ObjectCode.zone
-		                + button.control;
-		                + "00";
+		                + button.control
+		                + "00"; 
 		        } else {
 		            stringCmd =
 		                sendCommand

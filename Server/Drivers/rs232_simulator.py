@@ -42,7 +42,7 @@ def my_sql_update(address,control_function,new_value):
 	cursor = db.cursor()
 	
 	# execute SQL update
-	sql = "update rs232sim.zones set "+ control_function +" = "+ new_value+ " where AD = " + address +""
+	sql = "update rs232sim.zones set {} = {} where AD = {}".format(control_function, new_value, address)
 	
 	cursor.execute(sql)
 	
@@ -59,7 +59,7 @@ def my_sql_query(address):
 	cursor = db.cursor()
 
 	# execute SQL query using execute() method
-	cursor.execute("SELECT * from zones where AD ="+ address)
+	cursor.execute("SELECT * from zones where AD = %s",(address))
 	
 	# Fetch all rows using fetchall() method
 	results = cursor.fetchall()
@@ -67,9 +67,13 @@ def my_sql_query(address):
 	# disconnect from server
 	db.close()
 	
+	# assign multiple variables to tuple results[0]
 	AD,PA,PR,MU,DT,VO,TR,BS,BL,CH,KP,index = results[0]
 	
-	query_resp = "?"+address+"#>"+str(AD).zfill(2)+str(PA).zfill(2)+str(PR).zfill(2)+str(MU).zfill(2)+str(DT).zfill(2)+str(VO).zfill(2)+str(TR).zfill(2)+str(BS).zfill(2)+str(BL).zfill(2)+str(CH).zfill(2)+str(KP).zfill(2)+"#"+chr(13)
+	# create response string - RS232 comm returns one string with all settings 
+	query_resp = "?"+address+"#>"+str(AD).zfill(2)+str(PA).zfill(2)+str(PR).zfill(2)+\
+		str(MU).zfill(2)+str(DT).zfill(2)+str(VO).zfill(2)+str(TR).zfill(2)+str(BS).zfill(2)+\
+		str(BL).zfill(2)+str(CH).zfill(2)+str(KP).zfill(2)+"#"+chr(13)
 	
 	return query_resp
 
