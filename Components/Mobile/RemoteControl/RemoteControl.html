@@ -33,7 +33,7 @@
 	            <div class="col-sm-4"> 
 					<div class="row">
 						<div class="col-sm-4 control_label center">{{rangeControl.displayName}}</div>
-						<div class="col-sm-4 control_label center" id="ATTR_{{rangeControl.displayName}}_Label">{{controlStatus[rangeControl.displayName]}}</div>
+						<div class="col-sm-4 control_label center">{{getRangeValueWithOffset(rangeControl)}}</div>
 					</div>
 	            </div>
 		    <div class="col-sm-4 center"><button ng-click="rangeControlClick(rangeControl, 'UP')" 

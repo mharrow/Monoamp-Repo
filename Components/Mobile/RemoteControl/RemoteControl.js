@@ -54,57 +54,77 @@
 		        //if power is on, send message to turn off
 		        //DO NOT SET BUTTON UNTIL RECIEVE A RESPONSE
 		        console.log("Toggle Pressed: " + button.displayName);
-		        debugger;
 		
-		        if ($scope.controlStatus[button.displayName]) {
-		            //disable source selection and power off selected zone
-		            stringCmd =
-		                sendCommand
-		                + $scope.controlStatus.ObjectCode.unit + "" + $scope.controlStatus.ObjectCode.zone
-		                + button.control
-		                + "00"; 
-		        } else {
-		            stringCmd =
-		                sendCommand
-		                + $scope.controlStatus.ObjectCode.unit + "" + $scope.controlStatus.ObjectCode.zone
-		                + button.control
-		                + "01";
+		        if ($scope.controlStatus.Power || button.control == "PR"){
+			        if ($scope.controlStatus[button.displayName]) {
+			            //disable source selection and power off selected zone
+			            stringCmd =
+			                sendCommand
+			                + $scope.controlStatus.ObjectCode.unit + "" + $scope.controlStatus.ObjectCode.zone
+			                + button.control
+			                + "00"; 
+			        } else {
+			            stringCmd =
+			                sendCommand
+			                + $scope.controlStatus.ObjectCode.unit + "" + $scope.controlStatus.ObjectCode.zone
+			                + button.control
+			                + "01";
+			        }
+			
+			        console.log("Command to Post:" + stringCmd);
+			        serCmd(stringCmd);
 		        }
-		
-		        console.log("Command to Post:" + stringCmd);
-		        serCmd(stringCmd);
 		}
 		
 	      $scope.rangeControlClick = function (rangeControl, buttonDirection) {
 		        console.log("Button Pressed: " + rangeControl.displayName + "_" + buttonDirection);
-		        var controlValue = $scope.controlStatus[rangeControl.displayName];
-		
-		        if (buttonDirection == "UP") {
-		            if (controlValue + 1 <= rangeControl.max) {
-		                stringCmd =
-		                    sendCommand
-		                    + $scope.controlStatus.ObjectCode.unit + "" + $scope.controlStatus.ObjectCode.zone
-		                    + rangeControl.control
-		                    + getValueString(controlValue + 1);
-		                console.log("Scale button action to Post: " + stringCmd);
-		                serCmd(stringCmd);
-		            } else {
-		                console.log("Scale command out of range");
-		            }
-		        } else { //button direction is down
-		            if (controlValue - 1 >= rangeControl.min) {
-		                stringCmd =
-							sendCommand 
-							+ $scope.controlStatus.ObjectCode.unit + "" + $scope.controlStatus.ObjectCode.zone 
-							+ rangeControl.control
-							+ getValueString(controlValue - 1);
-						console.log("Scale button action to Post: " + stringCmd);
-						serCmd(stringCmd);
-		            } else {
-		                console.log("Scale command out of range");
-		            }
+		        if ($scope.controlStatus.Power){
+			        var controlValue = $scope.controlStatus[rangeControl.displayName];
+			
+			        if (buttonDirection == "UP") {
+			            if (controlValue + 1 <= rangeControl.max) {
+			                stringCmd =
+			                    sendCommand
+			                    + $scope.controlStatus.ObjectCode.unit + "" + $scope.controlStatus.ObjectCode.zone
+			                    + rangeControl.control
+			                    + getValueString(controlValue + 1);
+			                console.log("Scale button action to Post: " + stringCmd);
+			                serCmd(stringCmd);
+			            } else {
+			                console.log("Scale command out of range");
+			            }
+			        } else { //button direction is down
+			            if (controlValue - 1 >= rangeControl.min) {
+			                stringCmd =
+								sendCommand 
+								+ $scope.controlStatus.ObjectCode.unit + "" + $scope.controlStatus.ObjectCode.zone 
+								+ rangeControl.control
+								+ getValueString(controlValue - 1);
+							console.log("Scale button action to Post: " + stringCmd);
+							serCmd(stringCmd);
+			            } else {
+			                console.log("Scale command out of range");
+			            }
+			        }
 		        }
 		    }
+		    
+		function parseMenuSettings(resp)
+		{
+			$scope.zoneSettings = resp.slice(0,6);
+			$scope.sourceSettings = resp.slice(6,12);
+			
+			var attributes = resp.slice(12,resp.length);
+			
+			$scope.powerSettings = $(attributes).filter(function (i,n){return n.control==='PR'})[0];
+			$scope.muteSettings = $(attributes).filter(function (i,n){return n.control==='MU'})[0];
+			$scope.globalSourceSettings = $(attributes).filter(function (i,n){return n.control==='CH'})[0]; 
+			
+			$scope.rangeControls = $(attributes).filter(function (i,n){return n.type==='range'});
+			
+			$scope.controlStatus.ObjectCode.zone = $scope.zoneSettings[0].positionAddress;
+			$scope.controlStatus.Source = $scope.sourceSettings[0].positionAddress;
+		}
 		
 		function serCmd(stringCmd){
 			// use API service to issue a command to blah
@@ -139,15 +159,25 @@
 			}
 		}
 		
+		$scope.getRangeValueWithOffset = function(rangeControl){
+			var value = parseInt($scope.controlStatus[rangeControl.displayName]) 
+						- parseInt(rangeControl.offset);
+			return value.toString();
+		}
+		
 		function setPower(newPowerState) {
 		    var powerButton = document.getElementById("TOGGLE_Power");
+		    var sourceMenu = document.getElementById("source_select");
+	
 		    //powerOn is the last state of the button
 		    //if powerOn is the same as the new state, no need to do anything
 		    if (newPowerState) {
+		        sourceMenu.disabled = false;
 		        powerButton.className = powerButton.className.replace("powerOff", "powerOn");
 		        powerButton.textContent = powerButton.textContent.replace("OFF", "ON");
 		        $scope.controlStatus.Power = 1;
 		    } else {
+		        sourceMenu.disabled = true;
 		        powerButton.className = powerButton.className.replace("powerOn", "powerOff");
 		        powerButton.textContent = powerButton.textContent.replace("ON", "OFF");
 		        $scope.controlStatus.Power = 0;
@@ -157,20 +187,7 @@
 		function getValueString(value) {
 		    return (value >= 10) ? value.toString() : "0" + value.toString();
 		}
-			
-		function parseMenuSettings(resp)
-		{
-			$scope.zoneSettings = resp.slice(0,6);
-			$scope.sourceSettings = resp.slice(6,12);
-			var attributes = resp.slice(12,resp.length);
-			$scope.powerSettings = $(attributes).filter(function (i,n){return n.control==='PR'})[0];
-			$scope.muteSettings = $(attributes).filter(function (i,n){return n.control==='MU'})[0];
-			$scope.globalSourceSettings = $(attributes).filter(function (i,n){return n.control==='CH'})[0]; 
-			$scope.rangeControls = $(attributes).filter(function (i,n){return n.type==='range'});
-			$scope.controlStatus.ObjectCode.zone = $scope.zoneSettings[0].positionAddress;
-			$scope.controlStatus.Source = $scope.sourceSettings[0].positionAddress;
-		}
-		
+					
 		function setControlStatus(resp)
 		{// This is the best way to perform an SQL query
 		// For more examples, see mysql_real_escape_string()
