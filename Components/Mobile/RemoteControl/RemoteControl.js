@@ -54,7 +54,7 @@
 		        //if power is on, send message to turn off
 		        //DO NOT SET BUTTON UNTIL RECIEVE A RESPONSE
 		        console.log("Toggle Pressed: " + button.displayName);
-		        
+		        debugger;
 		
 		        if ($scope.controlStatus[button.displayName]) {
 		            //disable source selection and power off selected zone
@@ -180,8 +180,7 @@
 		        //splitting the zone into unit and zone
 		        //control object code are what these values represent as a pair
 		        $scope.controlStatus.ObjectCode.unit = parseInt(resp.substr(5, 1));
-		        $scope.controlStatus.ObjectCode.zone = parseInt(resp.substr(6, 1));
-		 
+		        $scope.controlStatus.ObjectCode.zone = $scope.zoneSettings[parseInt(resp.substr(6, 1)) - 1].positionAddress;
 		        setPower(parseInt(resp.substr(9, 2)));
 		
 		        $scope.controlStatus.Mute = parseInt(resp.substr(11, 2));
@@ -189,8 +188,8 @@
 		        $scope.controlStatus.Treble = parseInt(resp.substr(17, 2));
 		        $scope.controlStatus.Bass = parseInt(resp.substr(19, 2));
 		        $scope.controlStatus.Balance = parseInt(resp.substr(21, 2));		
-		        $scope.controlStatus.Source = parseInt(resp.substr(23, 2));
-		
+		        $scope.controlStatus.Source = $scope.sourceSettings[parseInt(resp.substr(23, 2)) -1].positionAddress;
+		        
 		        //log the $scope.controlStatus object
 		        console.log("[setting controls] Zone is: " + $scope.controlStatus.ObjectCode.unit
 		            + "" + $scope.controlStatus.ObjectCode.zone);

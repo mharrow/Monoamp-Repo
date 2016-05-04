@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 01, 2016 at 08:29 PM
+-- Generation Time: May 03, 2016 at 09:16 PM
 -- Server version: 5.5.49-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.16
 
@@ -47,7 +47,7 @@ INSERT INTO `attributes` (`control`, `visibleStatus`, `displayName`, `upIcon`, `
 ('BL', 0, 'Balance', 'fa fa-chevron-up', 'fa fa-chevron-down', 0, 20, 'range'),
 ('VO', 1, 'Volume', 'fa fa-volume-up', 'fa fa-volume-down', 0, 38, 'range'),
 ('CH', 1, 'Source', NULL, NULL, 1, 6, 'dropDown'),
-('PR', 1, 'Zone Power Off', NULL, NULL, 0, 1, 'toggle'),
+('PR', 1, 'Power', NULL, NULL, 0, 1, 'toggle'),
 ('MU', 1, 'Mute', NULL, NULL, 0, 1, 'toggle');
 
 -- --------------------------------------------------------

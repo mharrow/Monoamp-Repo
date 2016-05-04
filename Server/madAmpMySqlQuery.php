@@ -28,11 +28,11 @@ while(($row = mysql_fetch_assoc($result))) {
 	$madAmpData[] = $row;
 }
 // close mysql connection
-/*
+
 mysql_close($link);
 // Free the resources associated with the result set
 // This is done automatically at the end of the script
-mysql_free_result($result);*/
+mysql_free_result($result);
 
 $res = json_encode($madAmpData);
 echo $res;
