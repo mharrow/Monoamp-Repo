@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 03, 2016 at 09:16 PM
+-- Generation Time: May 05, 2016 at 10:27 AM
 -- Server version: 5.5.49-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.16
 
@@ -34,21 +34,22 @@ CREATE TABLE IF NOT EXISTS `attributes` (
   `downIcon` varchar(30) DEFAULT NULL,
   `min` int(11) DEFAULT NULL,
   `max` int(11) DEFAULT NULL,
-  `type` varchar(30) DEFAULT NULL
+  `type` varchar(30) DEFAULT NULL,
+  `offset` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `attributes`
 --
 
-INSERT INTO `attributes` (`control`, `visibleStatus`, `displayName`, `upIcon`, `downIcon`, `min`, `max`, `type`) VALUES
-('TR', 1, 'Treble', 'fa fa-chevron-up', 'fa fa-chevron-down', 0, 14, 'range'),
-('BS', 1, 'Bass', 'fa fa-chevron-up', 'fa fa-chevron-down', 0, 14, 'range'),
-('BL', 0, 'Balance', 'fa fa-chevron-up', 'fa fa-chevron-down', 0, 20, 'range'),
-('VO', 1, 'Volume', 'fa fa-volume-up', 'fa fa-volume-down', 0, 38, 'range'),
-('CH', 1, 'Source', NULL, NULL, 1, 6, 'dropDown'),
-('PR', 1, 'Power', NULL, NULL, 0, 1, 'toggle'),
-('MU', 1, 'Mute', NULL, NULL, 0, 1, 'toggle');
+INSERT INTO `attributes` (`control`, `visibleStatus`, `displayName`, `upIcon`, `downIcon`, `min`, `max`, `type`, `offset`) VALUES
+('TR', 1, 'Treble', 'fa fa-chevron-up', 'fa fa-chevron-down', 0, 14, 'range', 7),
+('BS', 1, 'Bass', 'fa fa-chevron-up', 'fa fa-chevron-down', 0, 14, 'range', 7),
+('BL', 0, 'Balance', 'fa fa-chevron-up', 'fa fa-chevron-down', 0, 20, 'range', 10),
+('VO', 1, 'Volume', 'fa fa-volume-up', 'fa fa-volume-down', 0, 38, 'range', 0),
+('CH', 1, 'Source', NULL, NULL, 1, 6, 'dropDown', 0),
+('PR', 1, 'Power', NULL, NULL, 0, 1, 'toggle', 0),
+('MU', 1, 'Mute', NULL, NULL, 0, 1, 'toggle', 0);
 
 -- --------------------------------------------------------
 
