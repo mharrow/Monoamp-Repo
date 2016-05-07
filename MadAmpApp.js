@@ -10,8 +10,12 @@
         ]).config(['$routeProvider', function($routeProvider) {
     $routeProvider
 	    .when('/', {
-	        controller: 'RemoteControl as vm',
+	        controller: 'RemoteControl',
 	        templateUrl: '/Components/Mobile/RemoteControl/RemoteControl.html'
+	    })
+	    .when('/RemoteSettings', {
+	        controller: 'RemoteSettings',
+	        templateUrl: '/Components/Mobile/RemoteSettings/RemoteSettings.html'
 	    })
 	    .otherwise({
 	        redirectTo: '/'
