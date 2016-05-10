@@ -37,7 +37,7 @@ body
 {
 	height:50%;
 	width:100%;
-	font-size: smaller;
+	font-size: 65%;
 	color: white;
 }
 
@@ -68,6 +68,16 @@ body
     background-image: linear-gradient(to bottom, #089916, #02c429);
     color:black;
 }
+.control_button.muteOn
+{
+    background: #ab0508;
+    background-image: -webkit-linear-gradient(top, #ab0508, #e6074a);
+    background-image: -moz-linear-gradient(top, #ab0508, #e6074a);
+    background-image: -ms-linear-gradient(top, #ab0508, #e6074a);
+    background-image: -o-linear-gradient(top, #ab0508, #e6074a);
+    background-image: linear-gradient(to bottom, #ab0508, #e6074a);
+    color:white;
+}
 
 .selection
 {
@@ -82,7 +92,7 @@ select
     text-align: center;
 }
 
-.control_button, select 
+.control_button, .select 
 {
 	text-transform: none;
 	height: 100%;
