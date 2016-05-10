@@ -169,7 +169,7 @@
 			var muteButton = document.getElementById("TOGGLE_Mute");
 			
 			if (newMuteState) {
-				muteButton.className = muteButton.className.replace("muteoff", "muteOn");
+				muteButton.className = muteButton.className.replace("muteOff", "muteOn");
 				muteButton.textContent = muteButton.textContent.replace("Mute", "Mute ON");
 				$scope.controlStatus.Mute = 1;
 			} else {
