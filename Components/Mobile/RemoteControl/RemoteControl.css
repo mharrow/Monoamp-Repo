@@ -108,3 +108,17 @@ select
     padding: 10px 20px 10px 20px;
     text-decoration: none;
 }
+
+.gridStyle {
+    font-size: inherit;
+    border: 1px solid rgb(212,212,212);
+    width: 100%; 
+    height: auto;
+}
+
+.ui-grid-contents-wrapper {
+    height: auto;
+}
+.ui-grid-header-cell-wrapper {
+    height: auto;
+}

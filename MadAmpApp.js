@@ -7,6 +7,7 @@
         
         // 3rd Party Modules
         'ui.bootstrap',      // ui-bootstrap (ex: carousel, pagination, dialog)
+        'ui.grid',			// displaying and modifying app settings
         ]).config(['$routeProvider', function($routeProvider) {
     $routeProvider
 	    .when('/', {
