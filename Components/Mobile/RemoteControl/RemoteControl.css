@@ -1,13 +1,12 @@
 html * 
 {
-    font-size: 14px; 
+    font-size: 1.4em; 
     font-family: Arial;
 }
 
 body 
 {
-	font-size: 100%;
-	height:85%;
+	height:90%;
 	background-color: #083B4D;
 }
 
@@ -25,12 +24,12 @@ body
 
 .element
 {
-	height: 11%;	
+	height: 11%	
 }
 
 .title_label
 {
-	font-size: smaller;
+	font-size: bigger;
 	color: white;
 }
 
@@ -69,6 +68,16 @@ body
     background-image: linear-gradient(to bottom, #089916, #02c429);
     color:black;
 }
+.control_button.muteOn
+{
+    background: #ab0508;
+    background-image: -webkit-linear-gradient(top, #ab0508, #e6074a);
+    background-image: -moz-linear-gradient(top, #ab0508, #e6074a);
+    background-image: -ms-linear-gradient(top, #ab0508, #e6074a);
+    background-image: -o-linear-gradient(top, #ab0508, #e6074a);
+    background-image: linear-gradient(to bottom, #ab0508, #e6074a);
+    color:white;
+}
 
 .selection
 {
@@ -80,16 +89,16 @@ select
 	-webkit-appearance: menulist-button;
     height: 100%;
 	line-height:100%;
-    text-align: center; 
+    text-align: center;
 }
 
-.control_button.select 
+.control_button, .select 
 {
 	text-transform: none;
 	height: 100%;
 	width: 100%;
 	text-align: center;
-	font-size: 140%;
+	font-size: inherit;
 }
 
 .control_button 
@@ -108,14 +117,4 @@ select
     color: black;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
-}
-.control_button.muteOn
-{
-	background: #ab0508;
-    background-image: -webkit-linear-gradient(top, #ab0508, #e6074a);
-    background-image: -moz-linear-gradient(top, #ab0508, #e6074a);
-    background-image: -ms-linear-gradient(top, #ab0508, #e6074a);
-    background-image: -o-linear-gradient(top, #ab0508, #e6074a);
-    background-image: linear-gradient(to bottom, #ab0508, #e6074a);
-    color:white;
 }

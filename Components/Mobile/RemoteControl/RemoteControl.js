@@ -25,10 +25,10 @@
 		
 		    Power: 0,
 		    Source: 1,
-		    Volume: 1,		
-		    Bass: 2,
-		    Treble: 3,
-		    Balance: 4,
+		    Volume: 20,		
+		    Bass: 7,
+		    Treble: 7,
+		    Balance: 10,
 		    Mute: 0
 		};
 		
@@ -165,6 +165,20 @@
 			return value.toString();
 		}
 		
+		function setMute(newMuteState) {
+			var muteButton = document.getElementById("TOGGLE_Mute");
+			
+			if (newMuteState) {
+				muteButton.className = muteButton.className.replace("muteoff", "muteOn");
+				muteButton.textContent = muteButton.textContent.replace("Mute", "Mute ON");
+				$scope.controlStatus.Mute = 1;
+			} else {
+				muteButton.className = muteButton.className.replace("muteOn", "muteOff");
+				muteButton.textContent = muteButton.textContent.replace("Mute ON", "Mute");
+				$scope.controlStatus.Mute = 0;
+			}
+		}
+		
 		function setPower(newPowerState) {
 		    var powerButton = document.getElementById("TOGGLE_Power");
 		    var sourceMenu = document.getElementById("source_select");
@@ -199,8 +213,9 @@
 		        $scope.controlStatus.ObjectCode.unit = parseInt(resp.substr(5, 1));
 		        $scope.controlStatus.ObjectCode.zone = $scope.zoneSettings[parseInt(resp.substr(6, 1)) - 1].positionAddress;
 		        setPower(parseInt(resp.substr(9, 2)));
-		
-		        $scope.controlStatus.Mute = parseInt(resp.substr(11, 2));
+				
+				setMute(parseInt(resp.substr(11,2)));
+		        //$scope.controlStatus.Mute = parseInt(resp.substr(11, 2));
 		        $scope.controlStatus.Volume = parseInt(resp.substr(15, 2));
 		        $scope.controlStatus.Treble = parseInt(resp.substr(17, 2));
 		        $scope.controlStatus.Bass = parseInt(resp.substr(19, 2));
