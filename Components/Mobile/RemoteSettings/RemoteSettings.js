@@ -23,8 +23,9 @@
 			$scope.zoneGrid = 
 				{data: $scope.zoneSettings,
 				 columnDefs: $scope.zoneDefs,
-				 minRowsToShow: $scope.zoneSettings.length-1,
-				 rowHeight: 40};
+				 rowHeight:88
+				};
+				debugger;
 		}
 	}
 })();

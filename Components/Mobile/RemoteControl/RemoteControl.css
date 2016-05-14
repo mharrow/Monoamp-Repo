@@ -1,11 +1,11 @@
 html * 
 {
-    font-size: 1.4em; 
     font-family: Arial;
 }
 
 body 
 {
+	font-size: 55px;
 	height:90%;
 	background-color: #083B4D;
 }
@@ -13,6 +13,18 @@ body
 .menu 
 {
     color:black;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.875em;
+}
+
+p {
+    font-size: 0.875em;
 }
 
 /*margin.top and margin.bottom percentage values are measured in width. fix for a gap is to 
@@ -120,11 +132,29 @@ select
 }
 
 .gridStyle {
-    font-size: inherit;
     border: 1px solid rgb(212,212,212);
     width: 100%; 
     height: auto;
 }
+
+.ui-grid-cell { 
+	display : table-cell; 
+	height: auto !important; 
+	overflow:visible; 
+	position: static; 
+	} 
+
+.ui-grid-row { 
+	/*display : table-row; */
+	height: auto !important; 
+	position: static; 
+	} 
+
+.ui-grid-cell-contents{ 
+	height: auto !important; 
+	/*white-space: normal; */
+	overflow:visible; 
+	}
 
 .ui-grid-contents-wrapper {
     height: auto;
@@ -132,3 +162,4 @@ select
 .ui-grid-header-cell-wrapper {
     height: auto;
 }
+
