@@ -1,11 +1,12 @@
 html * 
 {
-    font-size: 1.4em; 
+    font-size: 100%; 
     font-family: Arial;
 }
 
 body 
 {
+	font-size: 2.6em;
 	height:90%;
 	background-color: #083B4D;
 }
@@ -29,7 +30,7 @@ body
 
 .title_label
 {
-	font-size: bigger;
+	font-size: 100%;
 	color: white;
 }
 
@@ -37,7 +38,7 @@ body
 {
 	height:50%;
 	width:100%;
-	font-size: 65%;
+	font-size:180%;
 	color: white;
 }
 
@@ -98,7 +99,7 @@ select
 	height: 100%;
 	width: 100%;
 	text-align: center;
-	font-size: inherit;
+	font-size: 200%;
 }
 
 .control_button 
