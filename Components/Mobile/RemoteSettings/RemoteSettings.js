@@ -3,9 +3,30 @@
     var controllerId = 'RemoteSettings',
     	remote = angular.module('MadAmpApp');
     
-    remote.controller(controllerId, ['MadAmpAPIservice', '$scope', '$sce', viewModel]);
+	remote.filter('getRangeControls', function() {
+	
+	  // Create the return function and set the required parameter name to **input**
+	  return function(input) {
+	
+	    var out = [];
+	
+	    // Using the angular.forEach method, go through the array of data and perform the operation of figuring out if the language is statically or dynamically typed.
+	    angular.forEach(input, function(attribute) {
+	
+	      if (attribute.type === 'range') {
+	        out.push(attribute)
+	      }
+	      
+	    })
+	
+	    return out;
+	  }
+	
+	});
     
-    function viewModel(MadAmpAPIservice, $scope, $sce){
+    remote.controller(controllerId, ['MadAmpAPIservice', '$scope', '$sce', '$filter', viewModel]);
+    
+    function viewModel(MadAmpAPIservice, $scope, $sce, $filter){
     	console.log("inside remote settings")
     	$scope.oneAtATime = true;
     	$scope.grids = [];
@@ -44,12 +65,13 @@
 		{
 			$scope.zoneSettings = resp.slice(0,6);
 			$scope.sourceSettings = resp.slice(6,12);
-			$scope.attributes = resp.slice(12,resp.length);
-			
+			var attributes = resp.slice(12,resp.length);
+			$scope.attributes = $filter('getRangeControls')(attributes);
+			debugger;
 						
 			$scope.zoneDefs = [ {name: 'positionAddress', displayName: 'Id', width: "15%", enableCellEdit: false}, 
 								{name: 'zoneName', displayName: 'Zone Name' }, 
-   								{name: 'activeStatus', displayName: 'Active', width:"20%",
+   								{name: 'activeStatus', displayName: 'Active', enableCellEdit: false, width:"20%",
    								cellTemplate: '<div class="ui-grid-cell-contents" ng-bind-html="grid.appScope.setToggleButton(row)"></div>'},  
 							  ];
 							  
@@ -58,7 +80,7 @@
 							  	];
 							  	
 			$scope.attributeDefs = [ {name: 'displayName', displayName: 'Attribute Name', enableCellEdit: false},  
-   									 {name: 'visibleStatus', displayName: 'Visible', width:"20%",
+   									 {name: 'visibleStatus', displayName: 'Visible', enableCellEdit: false, width:"20%",
 	   								 cellTemplate: '<div class="ui-grid-cell-contents" ng-bind-html="grid.appScope.setToggleButton(row)"></div>'},  
 								   ];
 			
