@@ -9,7 +9,8 @@
         'ui.bootstrap',      // ui-bootstrap (ex: carousel, pagination, dialog)
         'ui.grid',			// displaying and modifying app settings
         'ui.grid.autoResize',
-    	'ui.grid.resizeColumns'
+    	'ui.grid.resizeColumns',
+    	'ui.grid.edit'
         ]).config(['$routeProvider', function($routeProvider) {
     $routeProvider
 	    .when('/', {

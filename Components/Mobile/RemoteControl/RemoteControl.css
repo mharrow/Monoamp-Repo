@@ -52,6 +52,7 @@ p {
 	width:100%;
 	font-size:180%;
 	color: white;
+	line-height: 1em;
 }
 
 .center
@@ -134,7 +135,7 @@ select
 
 .gridStyle {
     border: 1px solid rgb(212,212,212);
-    width: 100%; 
+    width: 100%
     height: auto;
 }
 
@@ -164,3 +165,7 @@ select
     height: auto;
 }
 
+.settingsButton{
+	width: 100%;
+	font-size: inherit;
+}

@@ -1,4 +1,10 @@
-<div ui-grid-selection class = "gridStyle" ui-grid="zoneGrid" 
-	style="height: {{(zoneGrid.data.length+1)*zoneGrid.rowHeight}}px" ui-grid-cellNav ui-grid-auto-resize ui-grid-edit>
-	
+<div>
+  <h2 style ="color:white">MAD Amp Settings</h2>
+  <accordion close-others="oneAtATime">
+  	<accordion-group ng-repeat="grid in grids" heading="{{grid.header}}">
+      	<div ui-grid-selection class = "gridStyle" ui-grid="grid.options" 
+			style="height: {{(grid.options.data.length+2)*grid.options.rowHeight}}px" ui-grid-cellNav ui-grid-auto-resize ui-grid-edit>
+	  	</div>
+    </accordion-group>
+  </accordion>
 </div>
