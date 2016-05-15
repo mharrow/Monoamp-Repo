@@ -169,3 +169,28 @@ select
 	width: 100%;
 	font-size: inherit;
 }
+
+.accordion-heading {
+    background-color: white;
+    border-radius: 25px;
+    padding: 11px;
+    font-size: 1.5em;
+}
+
+.accordion-group.ng-scope.ng-isolate-scope {
+    margin-bottom: 10px;
+    background-color: white;
+	border-radius: 25px 25px 0px 0px;
+}
+
+.settings-container {
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.panel-group {
+    margin-bottom: 20px;
+    width: 100%;
+}

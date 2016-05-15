@@ -63,6 +63,7 @@
 								   ];
 			
 			$scope.grids = [{
+						  open: false,
 						  header: "Zone Settings",
 						  options: { enableSorting: false,
 				 					 enableCellSelection: true,
@@ -72,6 +73,7 @@
 								   },
 							},
 							{
+						     open: false,
 							 header: "Source Settings",
 						  	 options: { enableSorting: false,
 				 			   		    enableCellSelection: true,
@@ -81,6 +83,7 @@
 								  	  },
 							 },
 							{
+						     open: false,							 
 							 header: "Attribute Settings",
 						  	 options: { enableSorting: false,
 				 			   		    enableCellSelection: true,

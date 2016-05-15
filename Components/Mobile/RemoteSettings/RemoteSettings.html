@@ -1,10 +1,19 @@
-<div>
+<div class="settings-container">
   <h2 style ="color:white">MAD Amp Settings</h2>
   <accordion close-others="oneAtATime">
-  	<accordion-group ng-repeat="grid in grids" heading="{{grid.header}}">
-      	<div ui-grid-selection class = "gridStyle" ui-grid="grid.options" 
+  	<accordion-group ng-repeat="grid in grids" heading="{{grid.header}}" is-open="grid.open">
+      	<div ng-if="grid.open" ui-grid-selection class = "gridStyle" ui-grid="grid.options" 
 			style="height: {{(grid.options.data.length+2)*grid.options.rowHeight}}px" ui-grid-cellNav ui-grid-auto-resize ui-grid-edit>
 	  	</div>
     </accordion-group>
   </accordion>
+  
+  <script id="template/accordion/accordion-group.html" type="text/ng-template">
+    <div class="accordion-group">
+        <div class="accordion-heading" ><a class="accordion-toggle" ng-click="isOpen = !isOpen" accordion-transclude="heading">{{heading}}</a></div>
+        <div class="accordion-body" ng-show="isOpen">
+            <div class="accordion-inner" ng-transclude></div>
+        </div>
+    </div>
+</script>
 </div>
