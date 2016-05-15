@@ -20,6 +20,10 @@
 	        controller: 'RemoteSettings',
 	        templateUrl: '/Components/Mobile/RemoteSettings/RemoteSettings.html'
 	    })
+	    .when('/DesktopControl', {
+			controller: 'DesktopControl',
+			templateUrl: '/Components/Desktop/DesktopControl/DesktopControl.html'
+		})
 	    .otherwise({
 	        redirectTo: '/'
 	    });

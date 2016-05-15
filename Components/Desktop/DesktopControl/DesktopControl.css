@@ -1,0 +1,166 @@
+html * 
+{
+    font-size: 100%; 
+    font-family: Arial;
+}
+
+body 
+{
+	font-size: 2.6em;
+	height:90%;
+	background-color: #083B4D;
+}
+
+.menu 
+{
+    color:black;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.875em;
+}
+
+p {
+    font-size: 0.875em;
+}
+
+/*margin.top and margin.bottom percentage values are measured in width. fix for a gap is to 
+    create an empty div with a height percentage that matches that of the desired gap*/
+.rowGap
+{
+    height: 4.5%;
+}
+
+.element
+{
+	height: 11%	
+}
+
+.title_label
+{
+	font-size: 100%;
+	color: white;
+}
+
+.control_label
+{
+	height:50%;
+	width:100%;
+	font-size:180%;
+	color: white;
+}
+
+.center
+{
+	text-align:center; 
+	vertical-align: top;
+}
+
+.control_button.powerOff
+{
+    background: #ab0508;
+    background-image: -webkit-linear-gradient(top, #ab0508, #e6074a);
+    background-image: -moz-linear-gradient(top, #ab0508, #e6074a);
+    background-image: -ms-linear-gradient(top, #ab0508, #e6074a);
+    background-image: -o-linear-gradient(top, #ab0508, #e6074a);
+    background-image: linear-gradient(to bottom, #ab0508, #e6074a);
+    color:white;
+}
+
+.control_button.powerOn
+{
+    background: #089916;
+    background-image: -webkit-linear-gradient(top, #089916, #02c429);
+    background-image: -moz-linear-gradient(top, #089916, #02c429);
+    background-image: -ms-linear-gradient(top, #089916, #02c429);
+    background-image: -o-linear-gradient(top, #089916, #02c429);
+    background-image: linear-gradient(to bottom, #089916, #02c429);
+    color:black;
+}
+.control_button.muteOn
+{
+    background: #ab0508;
+    background-image: -webkit-linear-gradient(top, #ab0508, #e6074a);
+    background-image: -moz-linear-gradient(top, #ab0508, #e6074a);
+    background-image: -ms-linear-gradient(top, #ab0508, #e6074a);
+    background-image: -o-linear-gradient(top, #ab0508, #e6074a);
+    background-image: linear-gradient(to bottom, #ab0508, #e6074a);
+    color:white;
+}
+
+.selection
+{
+	background-color:#33cc33;
+}
+
+select 
+{
+	-webkit-appearance: menulist-button;
+    height: 100%;
+	line-height:100%;
+    text-align: center;
+}
+
+.control_button, .select 
+{
+	text-transform: none;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	font-size: 200%;
+}
+
+.control_button 
+{
+    -webkit-appearance: none;
+    border-radius: 50px;
+    background: #f2f5f7;
+    background-image: -webkit-linear-gradient(top, #f2f5f7, #adabad);
+    background-image: -moz-linear-gradient(top, #f2f5f7, #adabad);
+    background-image: -ms-linear-gradient(top, #f2f5f7, #adabad);
+    background-image: -o-linear-gradient(top, #f2f5f7, #adabad);
+    background-image: linear-gradient(to bottom, #f2f5f7, #adabad);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    color: black;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 100%; 
+    height: auto;
+}
+
+.ui-grid-cell { 
+	display : table-cell; 
+	height: auto !important; 
+	overflow:visible; 
+	position: static; 
+	} 
+
+.ui-grid-row { 
+	/*display : table-row; */
+	height: auto !important; 
+	position: static; 
+	} 
+
+.ui-grid-cell-contents{ 
+	height: auto !important; 
+	/*white-space: normal; */
+	overflow:visible; 
+	}
+
+.ui-grid-contents-wrapper {
+    height: auto;
+}
+.ui-grid-header-cell-wrapper {
+    height: auto;
+}
+
