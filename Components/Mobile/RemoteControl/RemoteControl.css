@@ -169,10 +169,22 @@ select
 	width: 100%;
 	font-size: inherit;
 }
+.accordion-toggle{
+	display: block;
+}
+
+.accordion-heading:hover, .accordion-toggle:hover { 
+    display: block;
+    color: #337AB7;
+    background-color: lightgreen;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight:bold;
+}
 
 .accordion-heading {
     background-color: white;
-    border-radius: 25px;
+    border-radius: 25px 25px 0px 0px;
     padding: 11px;
     font-size: 1.5em;
 }
