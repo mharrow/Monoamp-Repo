@@ -3,18 +3,20 @@
     var controllerId = 'RemoteSettings',
     	remote = angular.module('MadAmpApp');
     
+    
     remote.controller(controllerId, ['MadAmpAPIservice', '$scope', '$sce', '$filter', viewModel]);
     
     function viewModel(MadAmpAPIservice, $scope, $sce, $filter){
-    	var attributeToggleTemplate = '<div class="ui-grid-cell-contents" ng-bind-html="grid.appScope.setToggleButton(row)"></div>',
+    	var attributeToggleTemplate = '<div class="ui-grid-cell-contents" ng-bind-html="grid.appScope.setToggleButton(row)" ng-click="grid.appScope.toggleSettingsButton(row)"></div>',
     		globalGridRowHeight = 47.6;
     	
     	$scope.oneAtATime = true;
     	$scope.grids = [];
     	$scope.zoneGrid = {};
     	
-    	$scope.showMe = function(row){
+    	$scope.toggleSettingsButton = function(row){
     		console.log(row);
+    		debugger;
     	}
     	
     	MadAmpAPIservice.getSettings().then(function(resp){
@@ -36,10 +38,10 @@
 		
 		$scope.getButton = function (success){
 			if(success == 1){
-				return $sce.trustAsHtml('<button class="btn btn-success settingsButton" ng-click="grid.appScope.showMe(row)"><i class="fa fa-check" aria-hidden="true"></i></button>');
+				return $sce.trustAsHtml('<button class="btn btn-success settingsButton"><i class="fa fa-check" aria-hidden="true"></i></button>');
 			}
 			else{
-				return	$sce.trustAsHtml('<button class="btn btn-danger settingsButton" ng-click="grid.appScope.showMe(row)"><i class="fa fa-times" aria-hidden="true"></i></button>');	
+				return	$sce.trustAsHtml('<button class="btn btn-danger settingsButton"><i class="fa fa-times" aria-hidden="true"></i></button>');	
 			}		
 		}
     	function parseMenuSettings(resp)
