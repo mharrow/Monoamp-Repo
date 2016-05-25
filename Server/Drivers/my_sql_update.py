@@ -23,14 +23,21 @@ def my_sql_update(table, field, field_value, pk, pk_value):
 	# Open database connection
 	db = MySQLdb.connect("localhost","root","udooer","madAmp")
 
-	# prepare a cursor object using cursor() method
+	# prepare a cursor object
 	cursor = db.cursor()
 	
-	if (field == "activeStatus"):
-		sql = "UPDATE {} SET {} = {} WHERE {} = {}".format(table, field, field_value, pk, pk_value)
-	else:
+	# Name change requires quotes for text
+	if (field.endswith("Name")):
 		sql = "UPDATE {} SET {} = '{}' WHERE {} = {}".format(table, field, field_value, pk, pk_value)
-			
+		
+	# attributes requires quotes for control field value	
+	elif (table == "attributes"):
+		sql = "UPDATE `{}` SET `{}` = {} WHERE `{}` = '{}'".format(table, field, field_value, pk, pk_value)
+		
+	# numerical update no quotes required	
+	else:
+		sql = "UPDATE {} SET {} = {} WHERE {} = {}".format(table, field, field_value, pk, pk_value)
+	
 	cursor.execute(sql)
 	
 	# commit changes in database
@@ -47,8 +54,12 @@ def my_sql_query(table, pk, pk_value):
 
 	# prepare a cursor object using cursor() method
 	cursor = db.cursor()
+	
 	# prep query command
-	sql = "SELECT * FROM {} WHERE {} = {}".format(table, pk, pk_value)
+	if (table == "attributes"):
+		sql = "SELECT * FROM `{}` WHERE `{}` = '{}'".format(table, pk, pk_value)
+	else:
+		sql = "SELECT * FROM `{}` WHERE `{}` = {}".format(table, pk, pk_value)
 
 	# execute SQL query using execute() method
 	cursor.execute(sql)
@@ -59,11 +70,17 @@ def my_sql_query(table, pk, pk_value):
 	# disconnect from server
 	db.close()
 	
-	# assign multiple variables to tuple results[0]
-	zoneName,unitAddress,positionAddress,activeStatus = results[0]
-	
-	# create response string - RS232 comm returns one string with all settings 
-	query_resp = table,zoneName,unitAddress,positionAddress,activeStatus
+	if (table == "zones"):
+		zoneName,unitAddress,positionAddress,activeStatus = results[0]
+		query_resp = table,zoneName,unitAddress,positionAddress,activeStatus
+		
+	elif (table == "sources"):
+		sourceName,unitAddress,positionAddress = results[0]
+		query_resp = table,sourceName,unitAddress,positionAddress
+		
+	else:
+		control,visibleStatus,displayName,upIcon,downIcon,minvalue,maxvalue,typerange,offset = results[0]
+		query_resp = table,control,visibleStatus,displayName,upIcon,downIcon,minvalue,maxvalue,typerange,offset
 	
 	return	query_resp
 
