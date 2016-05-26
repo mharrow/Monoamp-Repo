@@ -47,42 +47,42 @@ def my_sql_update(table, field, field_value, pk, pk_value):
 	return
 
 
-def my_sql_query(table, pk, pk_value):
-
-	# Open database connection
-	db = MySQLdb.connect("localhost","root","udooer","madAmp")
-
-	# prepare a cursor object using cursor() method
-	cursor = db.cursor()
-	
-	# prep query command
-	if (table == "attributes"):
-		sql = "SELECT * FROM `{}` WHERE `{}` = '{}'".format(table, pk, pk_value)
-	else:
-		sql = "SELECT * FROM `{}` WHERE `{}` = {}".format(table, pk, pk_value)
-
-	# execute SQL query using execute() method
-	cursor.execute(sql)
-	
-	# Fetch all rows using fetchall() method
-	results = cursor.fetchall()
-	
-	# disconnect from server
-	db.close()
-	
-	if (table == "zones"):
-		zoneName,unitAddress,positionAddress,activeStatus = results[0]
-		query_resp = table,zoneName,unitAddress,positionAddress,activeStatus
-		
-	elif (table == "sources"):
-		sourceName,unitAddress,positionAddress = results[0]
-		query_resp = table,sourceName,unitAddress,positionAddress
-		
-	else:
-		control,visibleStatus,displayName,upIcon,downIcon,minvalue,maxvalue,typerange,offset = results[0]
-		query_resp = table,control,visibleStatus,displayName,upIcon,downIcon,minvalue,maxvalue,typerange,offset
-	
-	return	query_resp
+#~ def my_sql_query(table, pk, pk_value):
+#~ 
+	#~ # Open database connection
+	#~ db = MySQLdb.connect("localhost","root","udooer","madAmp")
+#~ 
+	#~ # prepare a cursor object using cursor() method
+	#~ cursor = db.cursor()
+	#~ 
+	#~ # prep query command
+	#~ if (table == "attributes"):
+		#~ sql = "SELECT * FROM `{}` WHERE `{}` = '{}'".format(table, pk, pk_value)
+	#~ else:
+		#~ sql = "SELECT * FROM `{}` WHERE `{}` = {}".format(table, pk, pk_value)
+#~ 
+	#~ # execute SQL query using execute() method
+	#~ cursor.execute(sql)
+	#~ 
+	#~ # Fetch all rows using fetchall() method
+	#~ results = cursor.fetchall()
+	#~ 
+	#~ # disconnect from server
+	#~ db.close()
+	#~ 
+	#~ if (table == "zones"):
+		#~ zoneName,unitAddress,positionAddress,activeStatus = results[0]
+		#~ query_resp = table,zoneName,unitAddress,positionAddress,activeStatus
+		#~ 
+	#~ elif (table == "sources"):
+		#~ sourceName,unitAddress,positionAddress = results[0]
+		#~ query_resp = table,sourceName,unitAddress,positionAddress
+		#~ 
+	#~ else:
+		#~ control,visibleStatus,displayName,upIcon,downIcon,minvalue,maxvalue,typerange,offset = results[0]
+		#~ query_resp = table,control,visibleStatus,displayName,upIcon,downIcon,minvalue,maxvalue,typerange,offset
+	#~ 
+	#~ return	query_resp
 
 
 if __name__ == '__main__':

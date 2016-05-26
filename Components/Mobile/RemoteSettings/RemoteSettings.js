@@ -40,7 +40,7 @@
 			console.log(toggleData);
 			
 			MadAmpAPIservice.updateSetting(toggleData).then(function(resp){
-				console.log(response);
+				console.log(resp);
 			}, function(resp){
 				console.log("error importing app settings")
 			});
