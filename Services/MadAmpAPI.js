@@ -23,15 +23,11 @@
 			});
 	    }
 	    
-	    MadAmpAPI.updateSetting = function(table, field, fieldValue, pk, pkValue) {
+	    MadAmpAPI.updateSetting = function(settingEntity) {
 	      return $http({
 	        method: 'POST', 
 	        url:'/Server/madAmpMySqlUpdate.php',
-	        data: {tableName: tableName,
-	        	   field: field,
-	        	   fieldValue: fieldValue,
-	        	   pk: pk,
-	        	   pkValue: pkValue},
+	        data: settingEntity,
 			headers: {'Content-Type': 'application/json'},
 			});
 	    }
