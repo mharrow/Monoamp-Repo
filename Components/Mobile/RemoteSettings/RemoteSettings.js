@@ -15,8 +15,35 @@
     	$scope.zoneGrid = {};
     	
     	$scope.toggleSettingsButton = function(row){
-    		console.log(row);
-    		debugger;
+    		var toggleData;
+    		if (row.entity.hasOwnProperty('activeStatus')){
+				toggleData = 
+				{
+				   tableName: "zones",
+	        	   field: "activeStatus",
+	        	   fieldValue: !parseInt(row.entity.activeStatus.toString()) ? "1":"0",
+	        	   pk: "positionAddress",
+	        	   pkValue: row.entity.positionAddress	
+				}
+			}
+			else if (row.entity.hasOwnProperty('visibleStatus')){
+				toggleData = 
+				{
+				   tableName: "attributes",
+	        	   field: "visibleStatus",
+	        	   fieldValue: !parseInt(row.entity.visibleStatus.toString())  ? "1":"0",
+	        	   pk: "control",
+	        	   pkValue: row.entity.control
+				}
+			}
+			
+			console.log(toggleData);
+			
+			MadAmpAPIservice.updateSetting(toggleData).then(function(resp){
+				console.log(response);
+			}, function(resp){
+				console.log("error importing app settings")
+			});
     	}
     	
     	MadAmpAPIservice.getSettings().then(function(resp){
