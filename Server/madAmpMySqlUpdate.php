@@ -7,8 +7,13 @@ header('Expires: Mon, 01 Jan 1996 00:00:00 GMT');
 // json from javascript client
 $command = json_decode(file_get_contents('php://input'), true);
 
-// python argument must be in quotes 
-$str = sprintf("python Drivers/my_sql_update.py " . $command[tableName] . " " . $command[field] . " " . $command[fieldValue] ." ". $command[pk] . " " . $command[pkValue]);
+if (strpos($command.field,"Name") !== false) {
+	$str = sprintf("python Drivers/my_sql_update.py " . $command[tableName] . " " . $command[field] . " '" . $command[fieldValue] ."' ". $command[pk] . " " . $command[pkValue]);
+} elseif (strpos($command.table,"attributes") !== false) {
+	$str = sprintf("python Drivers/my_sql_update.py " . $command[tableName] . " " . $command[field] . " " . $command[fieldValue] ." ". $command[pk] . " '" . $command[pkValue] . "'");
+} else {
+	$str = sprintf("python Drivers/my_sql_update.py " . $command[tableName] . " " . $command[field] . " " . $command[fieldValue] ." ". $command[pk] . " " . $command[pkValue]);
+}
 
 exec($str, $output);
 
