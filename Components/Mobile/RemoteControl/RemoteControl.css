@@ -82,6 +82,18 @@ p {
     background-image: linear-gradient(to bottom, #089916, #02c429);
     color:black;
 }
+
+.control_button.muteOff
+{
+    background: #089916;
+    background-image: -webkit-linear-gradient(top, #089916, #02c429);
+    background-image: -moz-linear-gradient(top, #089916, #02c429);
+    background-image: -ms-linear-gradient(top, #089916, #02c429);
+    background-image: -o-linear-gradient(top, #089916, #02c429);
+    background-image: linear-gradient(to bottom, #089916, #02c429);
+    color:black;
+}
+
 .control_button.muteOn
 {
     background: #ab0508;
@@ -131,6 +143,18 @@ select
     color: black;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
+}
+
+select#zone_select {
+    border-radius: 0px;
+}
+
+button#TOGGLE_Mute {
+    border-radius: 0px 50px 50px 0px;
+}
+
+button#TOGGLE_Power {
+    border-radius: 50px 0px 0px 50px;
 }
 
 .gridStyle {
