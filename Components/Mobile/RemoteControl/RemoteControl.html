@@ -2,7 +2,7 @@
 	<div class="rowGap"></div>
         <div class="row element">
 		<div class="col-sm-2 center">
-			<button ng-click="toggleButton(powerSettings)" class="buttonRight powerOff control_button" id="TOGGLE_Power">OFF</button>            
+			<button ng-click="toggleButton(powerSettings)" class="control_button powerOff fa fa-power-off" id="TOGGLE_Power"></i></button>            
         </div>
         <div class="col-sm-8">
         <select class="control_button" id="zone_select" ng-change="assignZone()" ng-model="controlStatus.ObjectCode.zone"
@@ -27,8 +27,7 @@
 	    <div class="rowGap"></div>
 	    <div ng-repeat="rangeControl in rangeControls | filter:{ visibleStatus: 1 }">
 		    <div class="row element">
-				<div class="col-sm-1 center"></div>
-		        <div class="col-sm-3 center"><button ng-click="rangeControlClick(rangeControl, 'DOWN')" 
+		        <div class="col-sm-4 center"><button ng-click="rangeControlClick(rangeControl, 'DOWN')" 
 		        	class="control_button"><i class="{{rangeControl.downIcon}}" aria-hidden="true"></i></button></div>
 		            <div class="col-sm-4"> 
 						<div class="row">
@@ -36,19 +35,21 @@
 							<div class="col-sm-4 control_label center">{{getRangeValueWithOffset(rangeControl)}}</div>
 						</div>
 		            </div>
-			    <div class="col-sm-3 center"><button ng-click="rangeControlClick(rangeControl, 'UP')" 
+			    <div class="col-sm-4 center"><button ng-click="rangeControlClick(rangeControl, 'UP')" 
 			    	class="control_button"><i class="{{rangeControl.upIcon}}" aria-hidden="true"></i></button></div>
 		    </div>
-		    <div class="col-sm-1 center"></div>
 		    <div class="rowGap"></div>
 	    </div>
     </div>
     <div ng-if="controlStatus.Power == 0" class="rowGap"></div>
     <div class="row menuRow element">
-		<div class="col-sm-5 center"></div>
+		<div class="col-sm-1 center"></div>
 		<div class="col-sm-2 center"><a href="#RemoteSettings"><button class="control_button" id="configMenu"><i class="fa fa-gears" aria-hidden="true"></i></button></a></div>
-		<div class="col-sm-5 center"></div>
-		
+		<div class="col-sm-1 center"></div>
+		<div class="col-sm-4 center"></div>
+        <div class="col-sm-1 center"></div>
+		<div class="col-sm-2 center"><button class="control_button" id="aboutProgram"><i class="fa fa-question" aria-hidden="true"></i></button></div>
+		<div class="col-sm-1 center"></div>
 	</div>
 </div>
 
