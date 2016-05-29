@@ -13,11 +13,15 @@ def main():
 	my_sql_update(table, field, field_value, pk, pk_value)
 		 		
 	# pass data to database query driver
-	resp = my_sql_query(table,pk,pk_value)
-		
+	resp = my_sql_query(table,field,pk,pk_value)
+	
 	# print response to console or Server - whomever called the program
-	print resp
-
+	if (resp[0] == field_value):
+		print field_value
+	
+	else:
+		print resp[0]
+	
 
 def my_sql_update(table, field, field_value, pk, pk_value):
 	# Open database connection
@@ -47,29 +51,31 @@ def my_sql_update(table, field, field_value, pk, pk_value):
 	return
 
 
-#~ def my_sql_query(table, pk, pk_value):
-#~ 
-	#~ # Open database connection
-	#~ db = MySQLdb.connect("localhost","root","udooer","madAmp")
-#~ 
-	#~ # prepare a cursor object using cursor() method
-	#~ cursor = db.cursor()
-	#~ 
-	#~ # prep query command
-	#~ if (table == "attributes"):
-		#~ sql = "SELECT * FROM `{}` WHERE `{}` = '{}'".format(table, pk, pk_value)
-	#~ else:
-		#~ sql = "SELECT * FROM `{}` WHERE `{}` = {}".format(table, pk, pk_value)
-#~ 
-	#~ # execute SQL query using execute() method
-	#~ cursor.execute(sql)
-	#~ 
-	#~ # Fetch all rows using fetchall() method
-	#~ results = cursor.fetchall()
-	#~ 
-	#~ # disconnect from server
-	#~ db.close()
-	#~ 
+def my_sql_query(table, field, pk, pk_value):
+
+	# Open database connection
+	db = MySQLdb.connect("localhost","root","udooer","madAmp")
+
+	# prepare a cursor object using cursor() method
+	cursor = db.cursor()
+	
+	# prep query command
+	if (table == "attributes"):
+		sql = "SELECT `{}` FROM `{}` WHERE `{}` = '{}'".format(field, table, pk, pk_value)
+	else:
+		sql = "SELECT `{}` FROM `{}` WHERE `{}` = {}".format(field, table, pk, pk_value)
+
+	# execute SQL query using execute() method
+	cursor.execute(sql)
+	
+	# Fetch all rows using fetchall() method
+	results = cursor.fetchall()
+	
+	# disconnect from server
+	db.close()
+	
+	query_resp = results[0]
+	
 	#~ if (table == "zones"):
 		#~ zoneName,unitAddress,positionAddress,activeStatus = results[0]
 		#~ query_resp = table,zoneName,unitAddress,positionAddress,activeStatus
@@ -81,9 +87,9 @@ def my_sql_update(table, field, field_value, pk, pk_value):
 	#~ else:
 		#~ control,visibleStatus,displayName,upIcon,downIcon,minvalue,maxvalue,typerange,offset = results[0]
 		#~ query_resp = table,control,visibleStatus,displayName,upIcon,downIcon,minvalue,maxvalue,typerange,offset
-	#~ 
-	#~ return	query_resp
-
+	
+	return	query_resp
+ 
 
 if __name__ == '__main__':
 	main()				

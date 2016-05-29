@@ -2,13 +2,16 @@
 	<div class="rowGap"></div>
         <div class="row element">
 		<div class="col-sm-1 center"></div>
-        <div class="col-sm-10">
+        <div class="col-sm-8">
         <select class="control_button" id="zone_select" ng-change="assignZone()" ng-model="controlStatus.ObjectCode.zone"
         	ng-options="zone.positionAddress as zone.zoneName for zone in zoneSettings">
         </select>
         </div>
-        <div class="col-sm-1 center"></div>
-    </div>
+        <div class="col-sm-2 center">
+			<button ng-click="toggleButton(powerSettings)" class="powerOff control_button" id="TOGGLE_Power">OFF</button></div>
+		</div>
+		<div class="col-sm-1 center"></div>
+<!--
     <div class="rowGap"></div>
     <div class="row element">
 		<div class="col-sm-1 center"></div>
@@ -17,12 +20,15 @@
         <div class="col-sm-1 center"></div>
         </div>
     </div>
+-->
     <div class="rowGap"></div>
     <div class="row element">
-        <div class="col-sm-12">
+		<div class="col-sm-1 center"></div>
+        <div class="col-sm-10">
             <select class="control_button" id="source_select" ng-change="assignSource()" ng-model="controlStatus.Source" required
             	ng-options="source.positionAddress as source.sourceName for source in sourceSettings">
             </select>
+        <div class="col-sm-1 center"></div>   
         </div>
     </div>
     <div class="rowGap"></div>
