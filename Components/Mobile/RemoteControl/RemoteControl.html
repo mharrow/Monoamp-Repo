@@ -1,7 +1,9 @@
 <div class="col-sm-12 menu">
 	<div class="rowGap"></div>
         <div class="row element">
-		<div class="col-sm-1 center"></div>
+		<div class="col-sm-2 center">
+            <button ng-click="toggleButton(muteSettings)" class="muteOff control_button" id="TOGGLE_Mute"></button>
+        </div>
         <div class="col-sm-8">
         <select class="control_button" id="zone_select" ng-change="assignZone()" ng-model="controlStatus.ObjectCode.zone"
         	ng-options="zone.positionAddress as zone.zoneName for zone in zoneSettings">
@@ -10,7 +12,7 @@
         <div class="col-sm-2 center">
 			<button ng-click="toggleButton(powerSettings)" class="powerOff control_button" id="TOGGLE_Power">OFF</button></div>
 		</div>
-		<div class="col-sm-1 center"></div>
+		
 <!--
     <div class="rowGap"></div>
     <div class="row element">
@@ -51,9 +53,7 @@
 		<div class="col-sm-1 center"></div>
 		<div class="col-sm-2 center"><a href="#RemoteSettings"><button class="control_button" id="configMenu"><i class="fa fa-gears" aria-hidden="true"></i></button></a></div>
 		<div class="col-sm-1 center"></div>
-		<div class="col-sm-4 center">
-            <button ng-click="toggleButton(muteSettings)" class="muteOff control_button" id="TOGGLE_Mute">Mute</button>
-        </div>
+		<div class="col-sm-4 center"></div>
         <div class="col-sm-1 center"></div>
 		<div class="col-sm-2 center"><button class="control_button" id="aboutProgram"><i class="fa fa-question" aria-hidden="true"></i></button></div>
 		<div class="col-sm-1 center"></div>
