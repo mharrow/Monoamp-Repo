@@ -7,7 +7,10 @@
     remote.controller(controllerId, ['MadAmpAPIservice', '$scope', '$sce', '$filter', viewModel]);
     
     function viewModel(MadAmpAPIservice, $scope, $sce, $filter){
-    	var attributeToggleTemplate = '<div class="ui-grid-cell-contents" ng-bind-html="grid.appScope.setToggleButton(row)" ng-click="grid.appScope.toggleSettingsButton(row)"></div>',
+    	var attributeToggleTemplate = '<div class="ui-grid-cell-contents" ng-click="grid.appScope.toggleSettingsButton(row)">'
+    									+'<button ng-if="grid.appScope.toggleVisible(row) == 1" class="btn btn-success settingsButton"><i class="fa fa-check" aria-hidden="true"></i></button>'
+    									+'<button ng-if="grid.appScope.toggleVisible(row) == 0" class="btn btn-danger settingsButton"><i class="fa fa-times" aria-hidden="true"></i></button>'
+    									+'</div>',
     		globalGridRowHeight = 47.6;
     	
     	$scope.oneAtATime = true;
@@ -16,6 +19,7 @@
     	
     	$scope.toggleSettingsButton = function(row){
     		var toggleData;
+    		$scope.currentRow = row;
     		if (row.entity.hasOwnProperty('activeStatus')){
 				toggleData = 
 				{
@@ -40,7 +44,14 @@
 			console.log(toggleData);
 			
 			MadAmpAPIservice.updateSetting(toggleData).then(function(resp){
-				console.log(resp);
+				console.log(resp.data);
+				if(resp.data.tableName == "attributes"){
+					$scope.attributes[resp.data.field] = parseInt(resp.data.fieldValue);
+				}
+				else{
+					$scope.zoneSettings[resp.data.field] = parseInt(resp.data.fieldValue);
+				}
+				$scope.currentRow.entity[resp.data.field] = parseInt(resp.data.fieldValue);
 			}, function(resp){
 				console.log("error importing app settings")
 			});
@@ -53,24 +64,16 @@
 			});
 			
 			
-		$scope.setToggleButton = function (row){
+		$scope.toggleVisible = function (row){
 			if (row.entity.hasOwnProperty('activeStatus')){
-				return $scope.getButton(row.entity.activeStatus);
+				return row.entity.activeStatus;
 			}
-			else if (row.entity.hasOwnProperty('visibleStatus')){
-				return $scope.getButton(row.entity.visibleStatus);
+			if (row.entity.hasOwnProperty('visibleStatus')){
+				return row.entity.visibleStatus;
 			}
 			return ("error setting toggle button for "+row.entity);
 		};
 		
-		$scope.getButton = function (success){
-			if(success == 1){
-				return $sce.trustAsHtml('<button class="btn btn-success settingsButton"><i class="fa fa-check" aria-hidden="true"></i></button>');
-			}
-			else{
-				return	$sce.trustAsHtml('<button class="btn btn-danger settingsButton"><i class="fa fa-times" aria-hidden="true"></i></button>');	
-			}		
-		}
     	function parseMenuSettings(resp)
 		{
 			$scope.zoneSettings = resp.slice(0,6);

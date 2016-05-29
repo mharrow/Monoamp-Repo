@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
     var controllerId = 'RemoteControl';
-    angular.module('MadAmpApp').controller(controllerId, ['MadAmpAPIservice', '$scope', viewModel]);
-    function viewModel(MadAmpAPIservice, $scope){
+    angular.module('MadAmpApp').controller(controllerId, ['MadAmpAPIservice', '$scope', '$filter', viewModel]);
+    function viewModel(MadAmpAPIservice, $scope, $filter){
     	
 	
 		$scope.zoneSettings = "",
@@ -31,21 +31,23 @@
 		    Balance: 10,
 		    Mute: 0
 		};
-		
-		// on load of window set zone_select to first zone and query status
-		// from MonoAmp use result to set powerOn variable and all other
-		// parameters
-				
-		document.getElementById("zone_select").value = "11";
-		stringCmd =
-		    sendQuery
-		    + "11"
-		console.log("App start - Query status Zone 1:"+stringCmd);
-		serCmd(stringCmd);	// POST serial request for zone data
-			
+									
 		// POST mysql request for zone names
 		var settings = MadAmpAPIservice.getSettings().then(function(resp){
 			parseMenuSettings(resp.data)
+		// on load of window set zone_select to first zone and query status
+		// from MonoAmp use result to set powerOn variable and all other
+		// parameters
+			var firstActiveZone = $filter('getFirstActiveZone')($scope.zoneSettings)[0],
+				initialQuery = "1" + firstActiveZone.positionAddress;
+			
+			document.getElementById("zone_select").value = initialQuery;
+			stringCmd =
+		    	sendQuery
+		    	+ initialQuery
+			console.log("App start - Query status Zone 1:"+stringCmd);
+			serCmd(stringCmd);	// POST serial request for zone data
+			
 			}, function(resp){
 				console.log("error importing app settings")
 			});
@@ -121,9 +123,6 @@
 			$scope.globalSourceSettings = $(attributes).filter(function (i,n){return n.control==='CH'})[0]; 
 			
 			$scope.rangeControls = $(attributes).filter(function (i,n){return n.type==='range'});
-			
-			$scope.controlStatus.ObjectCode.zone = $scope.zoneSettings[0].positionAddress;
-			$scope.controlStatus.Source = $scope.sourceSettings[0].positionAddress;
 		}
 		
 		function serCmd(stringCmd){

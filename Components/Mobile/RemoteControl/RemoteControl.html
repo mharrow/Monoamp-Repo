@@ -3,8 +3,9 @@
         <div class="row element">
 		<div class="col-sm-1 center"></div>
         <div class="col-sm-10">
-        <select class="control_button" id="zone_select" ng-change="assignZone()" ng-model="controlStatus.ObjectCode.zone"
-        	ng-options="zone.positionAddress as zone.zoneName for zone in zoneSettings">
+        <select class="control_button" id="zone_select" ng-change="assignZone()" 
+        	ng-model="controlStatus.ObjectCode.zone"
+        	ng-options="zone.positionAddress as zone.zoneName for zone in zoneSettings | filter:{ activeStatus: 1 }">
         </select>
         </div>
         <div class="col-sm-1 center"></div>
@@ -20,7 +21,8 @@
     <div class="rowGap"></div>
     <div class="row element">
         <div class="col-sm-12">
-            <select class="control_button" id="source_select" ng-change="assignSource()" ng-model="controlStatus.Source" required
+            <select class="control_button" id="source_select" ng-change="assignSource()" 
+            	ng-init= "controlStatus.Source = sourceSettings[0].positionAddress" ng-model="controlStatus.Source" required
             	ng-options="source.positionAddress as source.sourceName for source in sourceSettings">
             </select>
         </div>
