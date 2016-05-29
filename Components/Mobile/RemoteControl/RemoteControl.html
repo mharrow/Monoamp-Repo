@@ -2,13 +2,12 @@
 	<div class="rowGap"></div>
         <div class="row element">
 		<div class="col-sm-2 center">
-			<button ng-click="toggleButton(powerSettings)" class="control_button powerOff fa fa-power-off" id="TOGGLE_Power"></i></button>            
+			<button ng-click="toggleButton(powerSettings)" class="control_button powerOff fa fa-power-off" id="TOGGLE_Power"></button>            
         </div>
         <div class="col-sm-8">
         <select class="control_button" id="zone_select" ng-change="assignZone()" 
         	ng-model="controlStatus.ObjectCode.zone"
         	ng-options="zone.positionAddress as zone.zoneName for zone in zoneSettings  | filter:{ activeStatus: 1 }">
-        </select>">
         </select>
         </div>
         <div class="col-sm-2 center">
