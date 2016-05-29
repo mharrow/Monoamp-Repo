@@ -181,17 +181,13 @@
 		
 		function setPower(newPowerState) {
 		    var powerButton = document.getElementById("TOGGLE_Power");
-		    var sourceMenu = document.getElementById("source_select");
-	
 		    //powerOn is the last state of the button
 		    //if powerOn is the same as the new state, no need to do anything
 		    if (newPowerState) {
-		        sourceMenu.disabled = false;
 		        powerButton.className = powerButton.className.replace("powerOff", "powerOn");
 		        powerButton.textContent = powerButton.textContent.replace("OFF", "ON");
 		        $scope.controlStatus.Power = 1;
 		    } else {
-		        sourceMenu.disabled = true;
 		        powerButton.className = powerButton.className.replace("powerOn", "powerOff");
 		        powerButton.textContent = powerButton.textContent.replace("ON", "OFF");
 		        $scope.controlStatus.Power = 0;

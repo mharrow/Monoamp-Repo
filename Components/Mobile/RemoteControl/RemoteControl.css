@@ -133,6 +133,18 @@ select
     text-decoration: none;
 }
 
+select#zone_select {
+    border-radius: 0px;
+}
+
+button#TOGGLE_Mute {
+    border-radius: 0px 50px 50px 0px;
+}
+
+button#TOGGLE_Power {
+    border-radius: 50px 0px 0px 50px;
+}
+
 .gridStyle {
     border: 1px solid rgb(212,212,212);
     width: 100%
