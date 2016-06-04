@@ -35,11 +35,13 @@
 	    <script src="./MadAmpApp.js" ng-module="MadAmpApp"></script>	    
 	    <script src="./Services/MadAmpAPI.js"></script>
 	    <script src="./Services/CustomFilters.js"></script>
+	    <script src="./Components/Layout/TopNav.js"></script>
 	    <script src="./Components/Mobile/RemoteControl/RemoteControl.js"></script>
 	    <script src="./Components/Mobile/RemoteSettings/RemoteSettings.js"></script>
 	    
 	</head>
 	<body ng-app="MadAmpApp">
-		<ng-view></ng-view>
+		<div data-ng-include="'/Components/Layout/TopNav.html'"></div>
+		<div><ng-view></ng-view></div>
 	</body>
 </html>

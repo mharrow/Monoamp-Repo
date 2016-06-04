@@ -1,5 +1,4 @@
 <div class="settings-container">
-  <h2 style ="color:white">MAD Amp Settings</h2>
   <accordion close-others="oneAtATime">
   	<accordion-group ng-repeat="grid in grids" heading="{{grid.header}}" is-open="grid.open">
       	<div ng-if="grid.open" ui-grid-selection class = "gridStyle" ui-grid="grid.options" 
@@ -16,11 +15,4 @@
         </div>
     </div>
 </script>
-</div>
-<div class="col-sm-12 menu">
-	<div class="rowGap"></div>
-    <div class="row menuRow element">
-		<div class="col-sm-2 center"><a href="#RemoteControl"><button class="control_button" id="configMenu"><i class="fa fa-mobile" aria-hidden="true"></i></button></a></div>
-		<div class="col-sm-10 center"></div>
-	</div>
 </div>

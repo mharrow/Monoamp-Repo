@@ -1,0 +1,18 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="TopNav">
+	<div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#/">MadAmp Wifi <i class="fa fa-wifi" aria-hidden="true"></i></a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+        <li ng-class="{ active: isActive('/')}">
+        	<a href="#RemoteControl" class="fa fa-mobile" aria-hidden="true"></a>
+        </li>
+        <li ng-class="{ active: isActive('/Desktop')}">
+        	<a href="#Desktop" class="fa fa-desktop" aria-hidden="true"></a>
+        </li>
+        <li ng-class="{ active: isActive('/RemoteSettings')}">
+        	<a href="#RemoteSettings" class="fa fa-gears" aria-hidden="true"></a>
+        </li>
+    </ul>
+   </div>
+</nav>

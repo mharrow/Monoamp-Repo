@@ -6,6 +6,7 @@ html *
 
 body 
 {
+	padding-top: 150px;
 	font-size: 2.6em;
 	height:90%;
 	background-color: #083B4D;
@@ -229,4 +230,50 @@ button#TOGGLE_Power {
 .panel-group {
     margin-bottom: 20px;
     width: 100%;
+}
+
+a.navbar-brand {
+    font-size: 0.7em;
+    padding-top:25px;
+}
+
+.navbar-nav > li > a {padding-top:50px !important; padding-bottom:50px !important;}
+.navbar {
+	min-height:90px !important;
+	font-size: 3em;
+	}
+	
+ul.nav {
+    width:50%;
+    margin:0 auto;
+    padding:0;
+    list-style:none;
+    /*background-color:#62564A;*/
+    text-align:center;
+    /*font-family: sans-serif; */
+}
+.nav li { 
+    display:inline-block;
+    width:33%;
+    margin:0;
+    padding:0;
+}
+.nav a {
+    text-align:center;
+    padding:12px 0 13px 0;
+    margin:0;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    display:block;
+}
+.nav a:hover { 
+    background:#A26A42;
+    border:none;
+}
+
+ul.nav li:first-child a{
+    border:none;
+}
+ul.nav li:last-child a {
+    border:none;
 }
