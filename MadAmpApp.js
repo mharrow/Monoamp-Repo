@@ -10,7 +10,9 @@
         'ui.grid',			// displaying and modifying app settings
         'ui.grid.autoResize',
     	'ui.grid.resizeColumns',
-    	'ui.grid.edit'
+    	'ui.grid.edit',
+    	'ui.grid.rowEdit', 
+    	'ui.grid.cellNav',
         ]).config(['$routeProvider', function($routeProvider) {
     $routeProvider
 	    .when('/', {

@@ -4,18 +4,57 @@
     	remote = angular.module('MadAmpApp');
     
     
-    remote.controller(controllerId, ['MadAmpAPIservice', '$scope', '$sce', '$filter', viewModel]);
+    remote.controller(controllerId, ['MadAmpAPIservice', '$scope', '$sce', '$filter', '$q', '$interval', viewModel]);
     
-    function viewModel(MadAmpAPIservice, $scope, $sce, $filter){
+    function viewModel(MadAmpAPIservice, $scope, $sce, $filter, $q, $interval){
     	var attributeToggleTemplate = '<div class="ui-grid-cell-contents" ng-click="grid.appScope.toggleSettingsButton(row)">'
     									+'<button ng-if="grid.appScope.toggleVisible(row) == 1" class="btn btn-success settingsButton"><i class="fa fa-check" aria-hidden="true"></i></button>'
     									+'<button ng-if="grid.appScope.toggleVisible(row) == 0" class="btn btn-danger settingsButton"><i class="fa fa-times" aria-hidden="true"></i></button>'
     									+'</div>',
-    		globalGridRowHeight = 47.6;
+    		globalGridRowHeight = 80;
     	
     	$scope.oneAtATime = true;
     	$scope.grids = [];
+    	$scope.gridApi = [];
     	$scope.zoneGrid = {};
+    	
+		$scope.registerGridApi = function(index, gridApi){
+		    //set gridApi on scope
+		    $scope.gridApi[index] = gridApi;
+		    gridApi.rowEdit.on.saveRow($scope, $scope.saveRow);
+		};
+		
+		$scope.saveRow = function( rowEntity ) {
+		    // create a fake promise - normally you'd use the promise returned by $http or $resource
+		    var toggleData, currentGrid;
+
+    		if (rowEntity.hasOwnProperty('zoneName')){
+				toggleData = 
+				{
+				   tableName: "zones",
+	        	   field: "zoneName",
+	        	   fieldValue: rowEntity.zoneName,
+	        	   pk: "positionAddress",
+	        	   pkValue: rowEntity.positionAddress	
+				}
+				currentGrid = 0;
+			}
+			else if (rowEntity.hasOwnProperty('sourceName')){
+				toggleData = 
+				{
+				   tableName: "sources",
+	        	   field: "sourceName",
+	        	   fieldValue: rowEntity.sourceName,
+	        	   pk: "positionAddress",
+	        	   pkValue: rowEntity.positionAddress
+				}
+				currentGrid = 1;
+			}
+			
+			var promise = MadAmpAPIservice.updateSetting(toggleData);
+			$scope.gridApi[currentGrid].rowEdit.setSavePromise(rowEntity, promise);
+
+    	}
     	
     	$scope.toggleSettingsButton = function(row){
     		var toggleData;
@@ -53,7 +92,7 @@
 				}
 				$scope.currentRow.entity[resp.data.field] = parseInt(resp.data.fieldValue);
 			}, function(resp){
-				console.log("error importing app settings")
+				console.log("error importing app settings");
 			});
     	}
     	
@@ -81,9 +120,9 @@
 			var attributes = resp.slice(12,resp.length);
 			$scope.attributes = $filter('getRangeControls')(attributes);
 						
-			$scope.zoneDefs = [ {name: 'positionAddress', displayName: 'Id', width: "15%", enableCellEdit: false}, 
-								{name: 'zoneName', displayName: 'Zone Name' }, 
-   								{name: 'activeStatus', displayName: 'Active', enableCellEdit: false, width:"20%",
+			$scope.zoneDefs = [ {name: 'positionAddress', displayName: '', width: "10%", enableCellEdit: false}, 
+								{name: 'zoneName', displayName: 'Zone Name', width: "60%" }, 
+   								{name: 'activeStatus', displayName: 'Active', enableCellEdit: false, width:"30%",
    								cellTemplate: attributeToggleTemplate},  
 							  ];
 							  
@@ -92,7 +131,7 @@
 							  	];
 							  	
 			$scope.attributeDefs = [ {name: 'displayName', displayName: 'Attribute Name', enableCellEdit: false},  
-   									 {name: 'visibleStatus', displayName: 'Visible', enableCellEdit: false, width:"20%",
+   									 {name: 'visibleStatus', displayName: 'Visible', enableCellEdit: false, width:"30%",
 	   								 cellTemplate: attributeToggleTemplate},  
 								   ];
 			
@@ -103,7 +142,8 @@
 				 					 enableCellSelection: true,
 				 					 data: $scope.zoneSettings,
 				 					 columnDefs: $scope.zoneDefs,
-				 					 rowHeight: globalGridRowHeight
+				 					 rowHeight: globalGridRowHeight,
+				 					 onRegisterApi: function(gridApi){$scope.registerGridApi(0, gridApi);}
 								   },
 							},
 							{
@@ -113,7 +153,8 @@
 				 			   		    enableCellSelection: true,
 				 					    data: $scope.sourceSettings,
 				 					    columnDefs: $scope.sourceDefs,
-				 					    rowHeight: globalGridRowHeight
+				 					    rowHeight: globalGridRowHeight,
+				 					 	onRegisterApi: function(gridApi){$scope.registerGridApi(1, gridApi);}
 								  	  },
 							 },
 							{
@@ -123,7 +164,8 @@
 				 			   		    enableCellSelection: true,
 				 					    data: $scope.attributes,
 				 					    columnDefs: $scope.attributeDefs,
-				 					    rowHeight: globalGridRowHeight
+				 					    rowHeight: globalGridRowHeight,
+				 					 	onRegisterApi: function(gridApi){$scope.registerGridApi(2, gridApi);}
 								  	  },
 							 },
 							 ];

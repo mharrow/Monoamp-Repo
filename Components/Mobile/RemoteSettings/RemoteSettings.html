@@ -1,7 +1,8 @@
 <div class="settings-container">
   <accordion close-others="oneAtATime">
   	<accordion-group ng-repeat="grid in grids" heading="{{grid.header}}" is-open="grid.open">
-      	<div ng-if="grid.open" ui-grid-selection class = "gridStyle" ui-grid="grid.options" 
+      	<div ng-if="grid.open" ui-grid-selection class = "gridStyle" ui-grid="grid.options"
+      		ui-grid-edit ui-grid-row-edit ui-grid-cellNav
 			style="height: {{(grid.options.data.length+2)*grid.options.rowHeight}}px" ui-grid-cellNav ui-grid-auto-resize ui-grid-edit>
 	  	</div>
     </accordion-group>
