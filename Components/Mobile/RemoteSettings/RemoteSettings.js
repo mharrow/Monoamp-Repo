@@ -53,6 +53,7 @@
 			
 			var promise = MadAmpAPIservice.updateSetting(toggleData);
 			$scope.gridApi[currentGrid].rowEdit.setSavePromise(rowEntity, promise);
+			console.log(JSON.stringify(toggleData));
 
     	}
     	

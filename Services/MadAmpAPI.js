@@ -27,7 +27,7 @@
 	      return $http({
 	        method: 'POST', 
 	        url:'/Server/madAmpMySqlUpdate.php',
-	        data: settingEntity,	
+	        data: JSON.stringify(settingEntity),	
 			headers: {'Content-Type': 'application/json'},
 			});
 	    }
