@@ -29,6 +29,11 @@
 		    var toggleData, currentGrid;
 
     		if (rowEntity.hasOwnProperty('zoneName')){
+				
+				if (rowEntity.zoneName.trim() == ""){
+					rowEntity.zoneName == "Zone "+ rowEntity.positionAddress;
+				}
+				
 				toggleData = 
 				{
 				   tableName: "zones",
@@ -37,14 +42,15 @@
 	        	   pk: "positionAddress",
 	        	   pkValue: rowEntity.positionAddress	
 				}
-				
-				if (rowEntity.zoneName.trim() == ""){
-					rowEntity.zoneName == "Zone "+ rowEntity.positionAddress;
-				}
-				
+								
 				currentGrid = 0;
 			}
 			else if (rowEntity.hasOwnProperty('sourceName')){
+				
+				if (rowEntity.sourceName.trim() == ""){
+					rowEntity.sourceName == "Source "+ rowEntity.positionAddress;
+				}
+				
 				toggleData = 
 				{
 				   tableName: "sources",
@@ -52,10 +58,6 @@
 	        	   fieldValue: rowEntity.sourceName,
 	        	   pk: "positionAddress",
 	        	   pkValue: rowEntity.positionAddress
-				}
-				
-				if (rowEntity.sourceName.trim() == ""){
-					rowEntity.sourceName == "Source "+ rowEntity.positionAddress;
 				}
 				
 				currentGrid = 1;
