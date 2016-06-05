@@ -29,9 +29,9 @@
 		    var toggleData, currentGrid;
 
     		if (rowEntity.hasOwnProperty('zoneName')){
-				
+			
 				if (rowEntity.zoneName.trim() == ""){
-					rowEntity.zoneName == "Zone "+ rowEntity.positionAddress;
+					rowEntity.zoneName = "Zone "+ rowEntity.positionAddress;
 				}
 				
 				toggleData = 
@@ -48,7 +48,7 @@
 			else if (rowEntity.hasOwnProperty('sourceName')){
 				
 				if (rowEntity.sourceName.trim() == ""){
-					rowEntity.sourceName == "Source "+ rowEntity.positionAddress;
+					rowEntity.sourceName = "Source "+ rowEntity.positionAddress;
 				}
 				
 				toggleData = 
@@ -133,25 +133,25 @@
 			var attributes = resp.slice(12,resp.length);
 			$scope.attributes = $filter('getRangeControls')(attributes);
 						
-			$scope.zoneDefs = [ {name: 'positionAddress', displayName: '', width: "10%", enableCellEdit: false}, 
-								{name: 'zoneName', displayName: 'Zone Name', width: "60%" }, 
+			$scope.zoneDefs = [ {name: 'positionAddress', displayName: 'Id', width: "10%", enableCellEdit: false, headerCellClass: 'gridHeader' }, 
+								{name: 'zoneName', displayName: 'Zone Name', width: "60%", headerCellClass: 'gridHeader' }, 
    								{name: 'activeStatus', displayName: 'Active', enableCellEdit: false, width:"30%",
-   								cellTemplate: attributeToggleTemplate},  
+   								cellTemplate: attributeToggleTemplate, headerCellClass: 'gridHeader'},  
 							  ];
 							  
-			$scope.sourceDefs = [ {name: 'positionAddress', displayName: 'Id', width: "15%", enableCellEdit: false}, 
-								  {name: 'sourceName', displayName: 'Source Name' },  
+			$scope.sourceDefs = [ {name: 'positionAddress', displayName: 'Id', width: "15%", enableCellEdit: false, headerCellClass: 'gridHeader'}, 
+								  {name: 'sourceName', displayName: 'Source Name', headerCellClass: 'gridHeader' },  
 							  	];
 							  	
-			$scope.attributeDefs = [ {name: 'displayName', displayName: 'Attribute Name', enableCellEdit: false},  
+			$scope.attributeDefs = [ {name: 'displayName', displayName: 'Attribute Name', enableCellEdit: false, headerCellClass: 'gridHeader'},  
    									 {name: 'visibleStatus', displayName: 'Visible', enableCellEdit: false, width:"30%",
-	   								 cellTemplate: attributeToggleTemplate},  
+	   								 cellTemplate: attributeToggleTemplate, headerCellClass: 'gridHeader'},  
 								   ];
 			
 			$scope.grids = [{
 						  open: false,
 						  header: "Zone Settings",
-						  options: { enableSorting: false,
+						  options: { enableColumnMenus: false,
 				 					 enableCellSelection: true,
 				 					 data: $scope.zoneSettings,
 				 					 columnDefs: $scope.zoneDefs,
@@ -162,7 +162,7 @@
 							{
 						     open: false,
 							 header: "Source Settings",
-						  	 options: { enableSorting: false,
+						  	 options: { enableColumnMenus: false,
 				 			   		    enableCellSelection: true,
 				 					    data: $scope.sourceSettings,
 				 					    columnDefs: $scope.sourceDefs,
@@ -173,7 +173,7 @@
 							{
 						     open: false,							 
 							 header: "Attribute Settings",
-						  	 options: { enableSorting: false,
+						  	 options: { enableColumnMenus: false,
 				 			   		    enableCellSelection: true,
 				 					    data: $scope.attributes,
 				 					    columnDefs: $scope.attributeDefs,

@@ -162,8 +162,8 @@ button#TOGGLE_Power {
     border: 1px solid rgb(212,212,212);
     width: 100%
     height: auto;
-    font-size: 2.5em;
-    line-height:65px;
+    font-size: 2.0em;
+    /*line-height:65px;*/
 }
 
 .ui-grid-cell { 
@@ -191,10 +191,14 @@ button#TOGGLE_Power {
 .ui-grid-header-cell-wrapper {
     height: auto;
 }
-
+.gridHeader{
+	color: white;
+	background-color: black;
+}
 .settingsButton{
 	width: 100%;
 	font-size: inherit;
+	height:78px;
 }
 .accordion-toggle{
 	display: block;
