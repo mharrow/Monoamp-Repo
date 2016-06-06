@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 05, 2016 at 10:27 AM
+-- Generation Time: Jun 06, 2016 at 11:07 AM
 -- Server version: 5.5.49-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.16
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `attributes` (
 INSERT INTO `attributes` (`control`, `visibleStatus`, `displayName`, `upIcon`, `downIcon`, `min`, `max`, `type`, `offset`) VALUES
 ('TR', 1, 'Treble', 'fa fa-chevron-up', 'fa fa-chevron-down', 0, 14, 'range', 7),
 ('BS', 1, 'Bass', 'fa fa-chevron-up', 'fa fa-chevron-down', 0, 14, 'range', 7),
-('BL', 0, 'Balance', 'fa fa-chevron-up', 'fa fa-chevron-down', 0, 20, 'range', 10),
+('BL', 1, 'Balance', 'fa fa-chevron-right', 'fa fa-chevron-left', 0, 20, 'range', 10),
 ('VO', 1, 'Volume', 'fa fa-volume-up', 'fa fa-volume-down', 0, 38, 'range', 0),
 ('CH', 1, 'Source', NULL, NULL, 1, 6, 'dropDown', 0),
 ('PR', 1, 'Power', NULL, NULL, 0, 1, 'toggle', 0),

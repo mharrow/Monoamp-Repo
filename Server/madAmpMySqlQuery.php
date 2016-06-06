@@ -7,8 +7,6 @@ $link = mysql_connect("localhost", "root", "udooer");
 mysql_select_db("madAmp", $link);
 // Formulate Query
 $query = sprintf("SELECT * FROM `zones`");
-// $command WHERE $command ='%s'",
-//   mysql_real_escape_string($command));
     
 // Perform Query
 $result = mysql_query($query);
