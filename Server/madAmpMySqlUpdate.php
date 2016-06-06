@@ -7,9 +7,9 @@ $json = "'".file_get_contents('php://input')."'";
 
 // json from javascript client
 $command = json_decode(file_get_contents('php://input'), true);
-// $command = '.$command.';
+
 $test_response = $command[fieldValue];
-// echo "'".$command[fieldValue]."'";
+
  if (strpos($command[field], "Name") !== false) {
 	$str = sprintf("python Drivers/my_sql_update.py " . $command[tableName] . " " . $command[field] . " '" . $command[fieldValue] ."' ". $command[pk] . " " . $command[pkValue]);
  } elseif (strpos($command[tableName], "attributes") !== false) {

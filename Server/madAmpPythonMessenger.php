@@ -5,12 +5,6 @@
 header('Cache-Control: no-cache, must-revalidate');
 header('Expires: Mon, 01 Jan 1996 00:00:00 GMT');
 
-// The JSON standard MIME header.
-// header('Content-type: application/json; charset=utf-8', true);
-// ini_set('display_errors', '1');
-// $data = file_get_contents("php://input");
-// $command = $_POST['serStr'];
-
 $command = json_decode(file_get_contents('php://input'), true);
 
 // python argument must be in quotes - commands have < as start character
