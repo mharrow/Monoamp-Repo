@@ -134,13 +134,13 @@
 			$scope.attributes = $filter('getRangeControls')(attributes);
 						
 			$scope.zoneDefs = [ {name: 'positionAddress', displayName: 'Id', width: "10%", enableCellEdit: false, headerCellClass: 'gridHeader' }, 
-								{name: 'zoneName', displayName: 'Zone Name', width: "60%", headerCellClass: 'gridHeader' }, 
+								{name: 'zoneName', displayName: 'Zone Name', width: "60%", headerCellClass: 'gridHeader', enableCellEditOnFocus: true }, 
    								{name: 'activeStatus', displayName: 'Active', enableCellEdit: false, width:"30%",
    								cellTemplate: attributeToggleTemplate, headerCellClass: 'gridHeader'},  
 							  ];
 							  
 			$scope.sourceDefs = [ {name: 'positionAddress', displayName: 'Id', width: "15%", enableCellEdit: false, headerCellClass: 'gridHeader'}, 
-								  {name: 'sourceName', displayName: 'Source Name', headerCellClass: 'gridHeader' },  
+								  {name: 'sourceName', displayName: 'Source Name', headerCellClass: 'gridHeader', enableCellEditOnFocus: true },  
 							  	];
 							  	
 			$scope.attributeDefs = [ {name: 'displayName', displayName: 'Attribute Name', enableCellEdit: false, headerCellClass: 'gridHeader'},  
@@ -151,7 +151,9 @@
 			$scope.grids = [{
 						  open: false,
 						  header: "Zone Settings",
-						  options: { enableColumnMenus: false,
+						  options: { enableHorizontalScrollbar: 0, 
+									 enableVerticalScrollbar: 0,
+						  			 enableColumnMenus: false,
 				 					 enableCellSelection: true,
 				 					 data: $scope.zoneSettings,
 				 					 columnDefs: $scope.zoneDefs,
@@ -162,7 +164,9 @@
 							{
 						     open: false,
 							 header: "Source Settings",
-						  	 options: { enableColumnMenus: false,
+						  	 options: { enableHorizontalScrollbar: 0, 
+										enableVerticalScrollbar: 0,
+						  	 			enableColumnMenus: false,
 				 			   		    enableCellSelection: true,
 				 					    data: $scope.sourceSettings,
 				 					    columnDefs: $scope.sourceDefs,
@@ -173,7 +177,9 @@
 							{
 						     open: false,							 
 							 header: "Attribute Settings",
-						  	 options: { enableColumnMenus: false,
+						  	 options: { enableHorizontalScrollbar: 0, 
+										enableVerticalScrollbar: 0,
+						  	 			enableColumnMenus: false,
 				 			   		    enableCellSelection: true,
 				 					    data: $scope.attributes,
 				 					    columnDefs: $scope.attributeDefs,
