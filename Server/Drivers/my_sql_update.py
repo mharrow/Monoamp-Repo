@@ -32,6 +32,7 @@ def my_sql_update(table, field, field_value, pk, pk_value):
 	
 	# Name change requires quotes for text
 	if (field.endswith("Name")):
+		field_value = field_value.replace("'","''")
 		sql = "UPDATE {} SET {} = '{}' WHERE {} = {}".format(table, field, field_value, pk, pk_value)
 		
 	# attributes requires quotes for control field value	
