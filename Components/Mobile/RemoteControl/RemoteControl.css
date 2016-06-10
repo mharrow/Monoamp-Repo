@@ -169,7 +169,7 @@ button#TOGGLE_Power {
 .ui-grid-cell { 
 	display : table-cell; 
 	height: auto !important; 
-	overflow:visible; 
+	/*overflow:visible; */
 	position: static; 
 	} 
 
@@ -181,7 +181,7 @@ button#TOGGLE_Power {
 
 .ui-grid-cell-contents{ 
 	height: auto !important; 
-	/*white-space: normal; */
+	white-space: nowrap; 
 	overflow:visible; 
 	}
 
