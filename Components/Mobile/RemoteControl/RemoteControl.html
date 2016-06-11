@@ -28,8 +28,8 @@
 	    </div>
 	    <div class="rowGap"></div>
 	    <div ng-repeat="rangeControl in rangeControls | filter:{ visibleStatus: 1 }">
-		    <div class="row element">
-				<div class="col-sm-1 center"></div>
+		    <!-- <div class="row element"> -->
+				<!-- <div class="col-sm-1 center"></div>
 		        <div class="col-sm-3 center"><button ng-click="rangeControlClick(rangeControl, 'DOWN')" 
 		        	class="control_button"><i class="{{rangeControl.downIcon}}" aria-hidden="true"></i></button></div>
 		            <div class="col-sm-4"> 
@@ -39,10 +39,17 @@
 						</div>
 		            </div>
 			    <div class="col-sm-3 center"><button ng-click="rangeControlClick(rangeControl, 'UP')" 
-			    	class="control_button"><i class="{{rangeControl.upIcon}}" aria-hidden="true"></i></button></div>
+			    	class="control_button"><i class="{{rangeControl.upIcon}}" aria-hidden="true"></i></button></div> -->
+			    	
+					<div class="col-sm-12 slidercontrol_label center">{{rangeControl.displayName}}</div>
+				    <div class="col-sm-12 slidercontrol_label center">
+				    	<rzslider rz-slider-model="controlStatus[rangeControl.displayName]" rz-slider-options="getRangeOptions(rangeControl)"></rzslider>
+				    </div>
+			    <!-- </div> -->
+			    
+				
 		    </div>
-		    <div class="col-sm-1 center"></div>
-		    <div class="rowGap"></div>
+
 	    </div>
     </div>
 </div>

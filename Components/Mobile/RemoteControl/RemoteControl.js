@@ -164,6 +164,29 @@
 			return value.toString();
 		}
 		
+		$scope.getRangeOptions = function (rangeControl){
+			
+			return {floor:  parseInt(rangeControl.min), 
+					ceil: parseInt(rangeControl.max),
+					rangeControl: rangeControl,
+					api: MadAmpAPIservice,
+					controlStatus: $scope.controlStatus,
+					onChange: function($scope) {
+						//debugger;
+						var value = this.controlStatus[this.rangeControl.displayName];
+						var valueAsString = (value >= 10) ? value.toString() : "0" + value.toString();
+            			var strCmd = "<" + this.controlStatus.ObjectCode.unit + "" + this.controlStatus.ObjectCode.zone 
+								+ this.rangeControl.control
+								+ valueAsString;
+								
+					    MadAmpAPIservice.sendCommand(strCmd).success(function(resp) 
+					    {
+					    	setControlStatus(resp);
+					    });
+            			console.log('on change '+strCmd); // logs 'on change slider-id'
+        			},};
+		}
+		
 		function setMute(newMuteState) {
 			var muteButton = document.getElementById("TOGGLE_Mute");
 			

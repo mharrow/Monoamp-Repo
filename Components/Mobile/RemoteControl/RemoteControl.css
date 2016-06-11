@@ -33,7 +33,7 @@ p {
     create an empty div with a height percentage that matches that of the desired gap*/
 .rowGap
 {
-    height: 4.5%;
+    height: 4%;
 }
 
 .element
@@ -54,6 +54,15 @@ p {
 	font-size:180%;
 	color: white;
 	line-height: 1em;
+}
+
+.slidercontrol_label
+{
+	height:9%;
+	/*width:100%;*/
+	font-size:180%;
+	color: white;
+	/*line-height: 1em;*/
 }
 
 .center
@@ -287,6 +296,19 @@ ul.nav {
 .nav a:hover { 
     background-color:#A26A42;
     /*border:none;*/
+}
+
+.rzslider.ng-isolate-scope {
+    width: 83.3333333%;
+}
+
+.rzslider .rz-bubble {
+    bottom: 2px;
+    padding: 1px 3px;
+    color: white;
+    cursor: default;
+    /*top: 20px;*/
+    text-shadow: 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000;
 }
 
 /*ul.nav li:first-child a{
