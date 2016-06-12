@@ -311,6 +311,12 @@ ul.nav {
     text-shadow: 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000;
 }
 
+.rzslider .rz-bubble.rz-limit {
+    color: #A59F9F;
+    text-shadow: 2px 0 0 #555, 0 -2px 0 #555, 0 2px 0 #333, -1px 0 0 #B5D1E4;
+}
+
+
 /*ul.nav li:first-child a{
     border:none;
 }*/
