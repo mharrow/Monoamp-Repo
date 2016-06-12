@@ -113,10 +113,12 @@
 		    
 		function parseMenuSettings(resp)
 		{
-			$scope.zoneSettings = resp.slice(0,6);
-			$scope.sourceSettings = resp.slice(6,12);
+	
+			$scope.slidersOn = parseInt(resp.slice(0,1)[0].slidersOn);
+			$scope.zoneSettings = resp.slice(1,7);
+			$scope.sourceSettings = resp.slice(7,13);
 			
-			var attributes = resp.slice(12,resp.length);
+			var attributes = resp.slice(13,resp.length);
 			
 			$scope.powerSettings = $(attributes).filter(function (i,n){return n.control==='PR'})[0];
 			$scope.muteSettings = $(attributes).filter(function (i,n){return n.control==='MU'})[0];

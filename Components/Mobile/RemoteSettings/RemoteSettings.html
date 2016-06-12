@@ -1,27 +1,22 @@
 <div class="settings-container">
   <accordion close-others="oneAtATime">
   	<accordion-group ng-repeat="grid in grids" heading="{{grid.header}}" is-open="grid.open">
-	  	<div ng-if="grid.header == 'Attribute Settings'">
-			<div class="row element">
-			  <div class="col-sm-6">Mobile Control Mode</div>
-			  <div class="col-sm-6">
-			    <div class="input-group pull-right">
-			      <div class="btn-group" data-toggle="buttons">
-			        <label class="btn btn-default">
-			          <input type="radio" checked="checked" name="options" id="option1"> Sliders
-			        </label>
-			        <label class="btn btn-default">
-			          <input type="radio" name="options" id="option2"> Buttons
-			        </label>
-			      </div>
-			    </div>
-		   </div>
-			</div>
-	  	</div>
       	<div ng-if="grid.open" ui-grid-selection class = "gridStyle" ui-grid="grid.options"
       		ui-grid-edit ui-grid-row-edit ui-grid-cellNav
 			style="height: {{(grid.options.data.length+2)*grid.options.rowHeight}}px" ui-grid-cellNav ui-grid-auto-resize ui-grid-edit>
 	  	</div>
+	  	<div ng-if="grid.header == 'Attribute Settings'">
+			<div class="row element">
+			  <div class="col-sm-7 loneSetting">Mobile Control Mode</div>
+			  <div class="col-sm-5">
+				  <div class="btn-group pull-right">
+				    <label class="btn btn-primary controlModeButton" btn-radio="0" ng-model="slidersOn" ng-change="toggleSliders()">Buttons</label>
+				    <label class="btn btn-primary controlModeButton" btn-radio="1" ng-model="slidersOn" ng-change="toggleSliders()">Sliders
+				    </label>
+				  </div>
+			    </div>
+		   </div>
+		</div>
     </accordion-group>
   </accordion>
   

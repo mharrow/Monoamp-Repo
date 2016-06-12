@@ -33,7 +33,7 @@ p {
     create an empty div with a height percentage that matches that of the desired gap*/
 .rowGap
 {
-    height: 4%;
+    height: 4.5%;
 }
 
 .element
@@ -168,12 +168,14 @@ button#TOGGLE_Power {
 }
 
 .gridStyle {
-    border: 1px solid rgb(212,212,212);
     width: 100%
     height: auto;
     font-size: 2.0em;
-    /*line-height:65px;*/
 }
+
+.ui-grid {
+    border: 0px;
+   }
 
 .ui-grid-cell { 
 	display : table-cell; 
@@ -227,7 +229,7 @@ button#TOGGLE_Power {
     background-image: -moz-linear-gradient(top, #f2f5f7, #adabad);
     background-image: -ms-linear-gradient(top, #f2f5f7, #adabad);
     background-image: -o-linear-gradient(top, #f2f5f7, #adabad);
-    background-image: linear-gradient(to bottom, #f2f5f7, #adabad);
+    background-image: linear-gradient(to bottom, #999, #FFFFFF);
     border-radius: 25px 25px 0px 0px;
     padding: 11px;
     font-size: 2.5em;
@@ -316,6 +318,28 @@ ul.nav {
     text-shadow: 2px 0 0 #555, 0 -2px 0 #555, 0 2px 0 #333, -1px 0 0 #B5D1E4;
 }
 
+.col-sm-7.loneSetting {
+    font-size: 2em;
+    padding-left: 19px;
+}
+
+.controlModeButton{
+	font-size: 1.6em;
+	padding-right: 19px;
+    width: 50%;
+}
+
+.btn-group.pull-right {
+    margin-right: 5px;
+    margin-top: 3px;
+    width: 100%;
+}
+
+.btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #1C3F5D;
+    border-color: #030A10;
+}
 
 /*ul.nav li:first-child a{
     border:none;

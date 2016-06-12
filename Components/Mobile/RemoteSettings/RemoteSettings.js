@@ -11,7 +11,7 @@
     									+'<button ng-if="grid.appScope.toggleVisible(row) == 1" class="btn btn-success settingsButton"><i class="fa fa-check" aria-hidden="true"></i></button>'
     									+'<button ng-if="grid.appScope.toggleVisible(row) == 0" class="btn btn-danger settingsButton"><i class="fa fa-times" aria-hidden="true"></i></button>'
     									+'</div>',
-    		globalGridRowHeight = 80;
+    		globalGridRowHeight = 76;
     	
     	$scope.oneAtATime = true;
     	$scope.grids = [];
@@ -69,6 +69,26 @@
 
     	}
     	
+    	$scope.toggleSliders = function(){
+    		console.log("sliders on:" + $scope.slidersOn);
+    		//debugger;
+    		
+    		var toggleData = 
+			{
+			   tableName: "attributeControlMode",
+        	   field: "slidersOn",
+        	   fieldValue: $scope.slidersOn? "0": "1",
+        	   pk: "1",
+        	   pkValue: "1"
+			}
+			
+			MadAmpAPIservice.updateSetting(toggleData).then(function(resp){
+				console.log("toggled control mode successfully!");
+			}, function(resp){
+				console.log("error toggling control mode");
+				$scope.slidersOn = $scope.slidersOn ? 0: 1; 
+			});
+    	}
     	$scope.toggleSettingsButton = function(row){
     		var toggleData;
     		$scope.currentRow = row;
@@ -128,9 +148,10 @@
 		
     	function parseMenuSettings(resp)
 		{
-			$scope.zoneSettings = resp.slice(0,6);
-			$scope.sourceSettings = resp.slice(6,12);
-			var attributes = resp.slice(12,resp.length);
+			$scope.slidersOn = parseInt(resp.slice(0,1)[0].slidersOn);
+			$scope.zoneSettings = resp.slice(1,7);
+			$scope.sourceSettings = resp.slice(7,13);
+			var attributes = resp.slice(13,resp.length);
 			$scope.attributes = $filter('getRangeControls')(attributes);
 						
 			$scope.zoneDefs = [ {name: 'positionAddress', displayName: 'Id', width: "10%", enableCellEdit: false, headerCellClass: 'gridHeader' }, 
