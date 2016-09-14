@@ -1,11 +1,11 @@
 /*
   Udoo Neo multple serial port
 
- Receives from the main Serial port, sends to Serial0
- Receives from Serial0, sends to the main Serial.
+ Create comm link between Internal A9/M4 port to External Serial Port
  Serial = /dev/ttyMCC
  Serial0 RX - J4 pin 0
  Serial0 TX - J4 pin 1
+ 
  */
 
 
@@ -16,13 +16,13 @@ void setup() {
 }
 
 void loop() {
-  // read from port 1, send to port 0:
+  // read from Serial0, send to A9/M4 Serial
   if (Serial0.available()) {
     int inByte = Serial0.read();
     Serial.write(inByte);
   }
 
-  // read from port 0, send to port 1:
+  // read from A9/M4 Serial, send to Serial0
   if (Serial.available()) {
     int inByte = Serial.read();
     Serial0.write(inByte);
