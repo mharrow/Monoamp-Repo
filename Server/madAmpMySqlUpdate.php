@@ -8,14 +8,14 @@ $json = "'".file_get_contents('php://input')."'";
 // json from javascript client
 $command = json_decode(file_get_contents('php://input'), true);
 
-$test_response = $command[fieldValue];
+$test_response = $command['fieldValue'];
 
- if (strpos($command[field], "Name") !== false) {
-	$str = sprintf("python Drivers/my_sql_update.py " . $command[tableName] . " " . $command[field] . " '" . $command[fieldValue] ."' ". $command[pk] . " " . $command[pkValue]);
- } elseif (strpos($command[tableName], "attributes") !== false) {
-	$str = sprintf("python Drivers/my_sql_update.py " . $command[tableName] . " " . $command[field] . " " . $command[fieldValue] ." ". $command[pk] . " '" . $command[pkValue] . "'");
+ if (strpos($command['field'], "Name") !== false) {
+	$str = sprintf("python Drivers/my_sql_update.py " . $command['tableName'] . ' ' . $command['field'] . ' "' . $command['fieldValue'] . '" ' . $command['pk'] . ' ' . $command['pkValue']);
+ } elseif (strpos($command['tableName'], "attributes") !== false) {
+	$str = sprintf("python Drivers/my_sql_update.py " . $command['tableName'] . " " . $command['field'] . " " . $command['fieldValue'] ." ". $command['pk'] . " '" . $command['pkValue'] . "'");
  } else {
-	 $str = sprintf("python Drivers/my_sql_update.py " . $command[tableName] . " " . $command[field] . " " . $command[fieldValue] ." ". $command[pk] . " " . $command[pkValue]);
+	 $str = sprintf("python Drivers/my_sql_update.py " . $command['tableName'] . " " . $command['field'] . " " . $command['fieldValue'] ." ". $command['pk'] . " " . $command['pkValue']);
  }
 
 exec($str, $output);
