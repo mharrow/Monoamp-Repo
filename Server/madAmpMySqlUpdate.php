@@ -3,7 +3,7 @@
 // Prevent caching.
 header('Cache-Control: no-cache, must-revalidate');
 header('Expires: Mon, 01 Jan 1996 00:00:00 GMT');
-$json = "'".file_get_contents('php://input')."'";
+// $json = "'".file_get_contents('php://input')."'";
 
 // json from javascript client
 $command = json_decode(file_get_contents('php://input'), true);
