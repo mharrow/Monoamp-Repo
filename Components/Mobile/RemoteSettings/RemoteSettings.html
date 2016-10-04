@@ -5,6 +5,18 @@
       		ui-grid-edit ui-grid-row-edit ui-grid-cellNav
 			style="height: {{(grid.options.data.length+2)*grid.options.rowHeight}}px" ui-grid-cellNav ui-grid-auto-resize ui-grid-edit>
 	  	</div>
+	  	<div ng-if="grid.header == 'Attribute Settings'">
+			<div class="row element">
+			  <div class="col-sm-7 loneSetting">Mobile Control Mode</div>
+			  <div class="col-sm-5">
+				  <div class="btn-group pull-right">
+				    <label class="btn btn-primary controlModeButton" btn-radio="0" ng-model="slidersOn" ng-change="toggleSliders()">Buttons</label>
+				    <label class="btn btn-primary controlModeButton" btn-radio="1" ng-model="slidersOn" ng-change="toggleSliders()">Sliders
+				    </label>
+				  </div>
+			    </div>
+		   </div>
+		</div>
     </accordion-group>
   </accordion>
   

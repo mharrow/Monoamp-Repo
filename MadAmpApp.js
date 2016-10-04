@@ -7,12 +7,15 @@
         
         // 3rd Party Modules
         'ui.bootstrap',      // ui-bootstrap (ex: carousel, pagination, dialog)
+        
         'ui.grid',			// displaying and modifying app settings
         'ui.grid.autoResize',
     	'ui.grid.resizeColumns',
     	'ui.grid.edit',
     	'ui.grid.rowEdit', 
     	'ui.grid.cellNav',
+    	
+    	'rzModule', //displaying angular modules
         ]).config(['$routeProvider', function($routeProvider) {
     $routeProvider
 	    .when('/', {

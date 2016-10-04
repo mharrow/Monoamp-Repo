@@ -113,10 +113,12 @@
 		    
 		function parseMenuSettings(resp)
 		{
-			$scope.zoneSettings = resp.slice(0,6);
-			$scope.sourceSettings = resp.slice(6,12);
+	
+			$scope.slidersOn = parseInt(resp.slice(0,1)[0].slidersOn);
+			$scope.zoneSettings = resp.slice(1,7);
+			$scope.sourceSettings = resp.slice(7,13);
 			
-			var attributes = resp.slice(12,resp.length);
+			var attributes = resp.slice(13,resp.length);
 			
 			$scope.powerSettings = $(attributes).filter(function (i,n){return n.control==='PR'})[0];
 			$scope.muteSettings = $(attributes).filter(function (i,n){return n.control==='MU'})[0];
@@ -162,6 +164,29 @@
 			var value = parseInt($scope.controlStatus[rangeControl.displayName]) 
 						- parseInt(rangeControl.offset);
 			return value.toString();
+		}
+		
+		$scope.getRangeOptions = function (rangeControl){
+			
+			return {floor:  parseInt(rangeControl.min), 
+					ceil: parseInt(rangeControl.max),
+					rangeControl: rangeControl,
+					api: MadAmpAPIservice,
+					controlStatus: $scope.controlStatus,
+					onChange: function($scope) {
+						//debugger;
+						var value = this.controlStatus[this.rangeControl.displayName];
+						var valueAsString = (value >= 10) ? value.toString() : "0" + value.toString();
+            			var strCmd = "<" + this.controlStatus.ObjectCode.unit + "" + this.controlStatus.ObjectCode.zone 
+								+ this.rangeControl.control
+								+ valueAsString;
+								
+					    MadAmpAPIservice.sendCommand(strCmd).success(function(resp) 
+					    {
+					    	setControlStatus(resp);
+					    });
+            			console.log('on change '+strCmd); // logs 'on change slider-id'
+        			},};
 		}
 		
 		function setMute(newMuteState) {

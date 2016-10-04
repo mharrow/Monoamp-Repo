@@ -6,7 +6,7 @@ $link = mysql_connect("localhost", "root", "udooer");
 // select database
 mysql_select_db("madAmp", $link);
 // Formulate Query
-$query = sprintf("SELECT * FROM `zones`");
+$query = sprintf("SELECT * FROM `attributeControlMode`");
     
 // Perform Query
 $result = mysql_query($query);
@@ -15,11 +15,19 @@ $madAmpData = array();
 while(($row = mysql_fetch_assoc($result))) {
 	$madAmpData[] = $row;
 }
+
+$query = sprintf("SELECT * FROM `zones`");
+$result = mysql_query($query);
+while(($row = mysql_fetch_assoc($result))) {
+	$madAmpData[] = $row;
+}
+
 $query = sprintf("SELECT * FROM `sources`");
 $result = mysql_query($query);
 while(($row = mysql_fetch_assoc($result))) {
 	$madAmpData[] = $row;
 }
+
 $query = sprintf("SELECT * FROM `attributes`");
 $result = mysql_query($query);
 while(($row = mysql_fetch_assoc($result))) {

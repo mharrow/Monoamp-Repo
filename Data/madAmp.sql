@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 06, 2016 at 11:07 AM
+-- Generation Time: Jun 12, 2016 at 05:26 PM
 -- Server version: 5.5.49-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.16
+-- PHP Version: 5.5.9-1ubuntu4.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,24 @@ SET time_zone = "+00:00";
 --
 -- Database: `madAmp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `attributeControlMode`
+--
+
+CREATE TABLE IF NOT EXISTS `attributeControlMode` (
+  `slidersOn` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`slidersOn`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='toggle slider controls or button controls';
+
+--
+-- Dumping data for table `attributeControlMode`
+--
+
+INSERT INTO `attributeControlMode` (`slidersOn`) VALUES
+(1);
 
 -- --------------------------------------------------------
 
@@ -68,12 +86,12 @@ CREATE TABLE IF NOT EXISTS `sources` (
 --
 
 INSERT INTO `sources` (`sourceName`, `unitAddress`, `positionAddress`) VALUES
-('Turntable', 0, 1),
-('Source 2', 0, 2),
-('Source 3', 0, 3),
-('Source 4', 0, 4),
+('TurnTable', 0, 1),
+('Dvd Player', 0, 2),
+('Ipod2', 0, 3),
+('BlueRay Player', 0, 4),
 ('Bluetooth', 0, 5),
-('Source 6', 0, 6);
+('Desk', 0, 6);
 
 -- --------------------------------------------------------
 
@@ -94,10 +112,10 @@ CREATE TABLE IF NOT EXISTS `zones` (
 
 INSERT INTO `zones` (`zoneName`, `unitAddress`, `positionAddress`, `activeStatus`) VALUES
 ('Master Bedroom', 1, 1, 1),
-('Dining Room', 1, 2, 1),
-('Living Room', 1, 3, 1),
+('Living Room', 1, 2, 1),
+('Dining Room', 1, 3, 1),
 ('Rec Room', 1, 4, 1),
-('Jordan''s Room', 1, 5, 1),
+('Jordan', 1, 5, 1),
 ('Office', 1, 6, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
