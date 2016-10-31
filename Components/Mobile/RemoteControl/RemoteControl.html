@@ -6,8 +6,8 @@
         </div>
         <div class="col-sm-8">
         <select class="control_button" id="zone_select" ng-change="assignZone()" 
-        	ng-model="controlStatus.ObjectCode.zone"
-        	ng-options="zone.positionAddress as zone.zoneName for zone in zoneSettings  | filter:{ activeStatus: 1 }">
+        	ng-model="selectedZone"
+        	ng-options="zone as zone.zoneName for zone in zoneSettings  | filter:{ activeStatus: 1 }">
         </select>
         </div>
         <div class="col-sm-2 center">

@@ -8,7 +8,7 @@
 		$scope.zoneSettings = "",
 		$scope.sourceSettings = "",
 		$scope.attributeSettings = "";
-	
+			
 		var	sendCommand = "<",
 		    sendQuery = "?",
 		    stringCmd = "",
@@ -115,10 +115,12 @@
 		{
 	
 			$scope.slidersOn = parseInt(resp.slice(0,1)[0].slidersOn);
-			$scope.zoneSettings = resp.slice(1,7);
-			$scope.sourceSettings = resp.slice(7,13);
+			$scope.zoneSettings = resp.slice(1,13);
+			$scope.sourceSettings = resp.slice(13,19);
 			
-			var attributes = resp.slice(13,resp.length);
+			var attributes = resp.slice(19,resp.length);
+			
+			$scope.selectedZone = $scope.zoneSettings[0];
 			
 			$scope.powerSettings = $(attributes).filter(function (i,n){return n.control==='PR'})[0];
 			$scope.muteSettings = $(attributes).filter(function (i,n){return n.control==='MU'})[0];
@@ -136,10 +138,11 @@
 		}
 
 		$scope.assignZone = function (){
+			
 		    //$scope.controlStatus.ObjectCode.zone = document.getElementById("zone_select").value;
 			stringCmd =
 		        sendQuery
-		        + $scope.controlStatus.ObjectCode.unit + "" + $scope.controlStatus.ObjectCode.zone;
+		        + $scope.selectedZone.unitAddress + "" + $scope.selectedZone.positionAddress;
 			console.log("Command to Post:"+stringCmd);
 			serCmd(stringCmd);	// POST serial command to php
 		}

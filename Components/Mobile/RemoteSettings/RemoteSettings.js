@@ -149,9 +149,9 @@
     	function parseMenuSettings(resp)
 		{
 			$scope.slidersOn = parseInt(resp.slice(0,1)[0].slidersOn);
-			$scope.zoneSettings = resp.slice(1,7);
-			$scope.sourceSettings = resp.slice(7,13);
-			var attributes = resp.slice(13,resp.length);
+			$scope.zoneSettings = resp.slice(1,13);
+			$scope.sourceSettings = resp.slice(13,19);
+			var attributes = resp.slice(19,resp.length);
 			$scope.attributes = $filter('getRangeControls')(attributes);
 						
 			$scope.zoneDefs = [ {name: 'positionAddress', displayName: 'Id', width: "10%", enableCellEdit: false, headerCellClass: 'gridHeader' }, 
