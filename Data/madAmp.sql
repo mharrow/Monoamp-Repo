@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 12, 2016 at 05:26 PM
--- Server version: 5.5.49-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.17
+-- Generation Time: Oct 30, 2016 at 11:29 PM
+-- Server version: 5.5.52-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `attributeControlMode` (
 --
 
 INSERT INTO `attributeControlMode` (`slidersOn`) VALUES
-(1);
+(0);
 
 -- --------------------------------------------------------
 
@@ -91,7 +91,7 @@ INSERT INTO `sources` (`sourceName`, `unitAddress`, `positionAddress`) VALUES
 ('Ipod2', 0, 3),
 ('BlueRay Player', 0, 4),
 ('Bluetooth', 0, 5),
-('Desk', 0, 6);
+('Source-6', 0, 6);
 
 -- --------------------------------------------------------
 
@@ -115,8 +115,14 @@ INSERT INTO `zones` (`zoneName`, `unitAddress`, `positionAddress`, `activeStatus
 ('Living Room', 1, 2, 1),
 ('Dining Room', 1, 3, 1),
 ('Rec Room', 1, 4, 1),
-('Jordan', 1, 5, 1),
-('Office', 1, 6, 1);
+('Lou''s Room', 1, 5, 1),
+('Office', 1, 6, 1),
+('Deck', 2, 1, 1),
+('Bar', 2, 2, 1),
+('Rec Room', 2, 3, 1),
+('Garage', 2, 4, 1),
+('Zone 25', 2, 5, 1),
+('Zone 26', 2, 6, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
