@@ -1,6 +1,34 @@
 # Monoamp-Repo
-Current selected Zone String returned from Distribution amp serial port:
-        
-        ?12#>1200000000130714100501# 
-        
-String length reported as 31 but only 28 are displayed.
+
+MadAmp - Monoprice Audio Distribution Amp
+=========================================
+
+  Control a Monoprice 6 zone Audio Distribution Amp using a phone or tablet via wifi connection. Use the device browser to access the Apache Server. Target board for this software is an UDOO Neo. Although the program will work on any Linux device that has an RS232 port which must be connected to the Distribution Amp RS232 control port.
+ 
+Audio Amp Front View
+====================
+[!alt tag][https://github.com/mharow/Monoamp-Repo/images/Audio_Amp_Frontview.jpg]
+
+  
+Audio Amp Rear View
+===================
+![](/images/Audio_Amp_rearView.jpg)
+
+
+Software Installation Required
+------------------------------
+* Apache Server
+* PHP
+* mySQL Database
+
+  Instructions for installation of these programs on a UDOO Neo can be found at this link.    (http://www.udoo.org/tutorial/udoo-web-server/)
+
+  Program requires madAmp database to be created. Use the file /Data/madAmp.sql and Phpmyadmin to create the database.
+  
+  
+
+
+
+
+
+
