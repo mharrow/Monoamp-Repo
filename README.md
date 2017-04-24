@@ -12,7 +12,7 @@ Audio Amp Front View
   
 Audio Amp Rear View
 ===================
-![](/images/Audio_Amp_rearView.jpg)
+![](/images/Audio_Amp_rearview.jpg)
 
 
 
