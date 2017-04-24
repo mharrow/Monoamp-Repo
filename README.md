@@ -7,12 +7,13 @@ MadAmp - Monoprice Audio Distribution Amp
  
 Audio Amp Front View
 ====================
-[!alt tag][https://github.com/mharow/Monoamp-Repo/images/Audio_Amp_Frontview.jpg]
+![](/images/Audio_Amp_Frontview.jpg)
 
   
 Audio Amp Rear View
 ===================
 ![](/images/Audio_Amp_rearView.jpg)
+
 
 
 Software Installation Required
@@ -21,9 +22,9 @@ Software Installation Required
 * PHP
 * mySQL Database
 
-  Instructions for installation of these programs on a UDOO Neo can be found at this link.    (http://www.udoo.org/tutorial/udoo-web-server/)
+  Instructions for installation of these programs on UDOO Neo can be found at this link.(http://www.udoo.org/tutorial/udoo-web-server/)
 
-  Program requires madAmp database to be created. Use the file /Data/madAmp.sql and Phpmyadmin to create the database.
+  Program also requires creation of madAmp database. Use the file /Data/madAmp.sql and Phpmyadmin to populate the database.
   
   
 
