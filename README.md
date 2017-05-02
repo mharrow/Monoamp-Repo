@@ -30,7 +30,20 @@ Software Installation Required
   
   (http://www.udoo.org/tutorial/udoo-web-server/)
 
-  Program also requires creation of madAmp database. Use the file /Data/madAmp.sql and Phpmyadmin to populate the database.
+  Program also requires creation of madAmp database. Use Phpmyadmin to create the databases and import the sql files from the Data folder to populate the databases.
+  
+  Database - madAmp - import file /Data/madAmp.sql
+  Database - rs232sim - import file /Data/rs232sim.sql
+
+Additional Software Required
+----------------------------
+  
+* Python mysqldb 
+
+  Install as follows: 
+  
+  sudo apt-get install python-mysqldb
+  
   
   
 
