@@ -112,17 +112,17 @@ CREATE TABLE IF NOT EXISTS `zones` (
 
 INSERT INTO `zones` (`zoneName`, `unitAddress`, `positionAddress`, `activeStatus`) VALUES
 ('Master Bedroom', 1, 1, 1),
-('Living Room', 1, 2, 1),
-('Dining Room', 1, 3, 1),
-('Rec Room', 1, 4, 1),
-('Lou''s Room', 1, 5, 1),
+('Dining Room', 1, 2, 1),
+('Living Room', 1, 3, 1),
+('Jordan''s Rm', 1, 4, 1),
+('Rec Room', 1, 5, 1),
 ('Office', 1, 6, 1),
-('Deck', 2, 1, 1),
+('Foyer', 2, 1, 1),
 ('Bar', 2, 2, 1),
-('Rec Room', 2, 3, 1),
+('Sauna', 2, 3, 1),
 ('Garage', 2, 4, 1),
-('Zone 25', 2, 5, 1),
-('Zone 26', 2, 6, 1);
+('Deck', 2, 5, 1),
+('Not used', 2, 6, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
